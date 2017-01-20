@@ -39,14 +39,6 @@ Route::get('admin/sette', function () {
 
 Route::get('admin/intervs', 'IntervController@show');
 
-Route::get('admin/intervs', function () {
-     $Intervs =Interv::Paginate(2);
-
-    return view('/admin/intervs', [
-        'Intervs' => $Intervs
-    ]);
-});
-
 // route to show the login form
 Route::get('logintern', array('uses' => 'LoginteruController@showLogin'));
 
