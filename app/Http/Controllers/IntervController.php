@@ -34,8 +34,8 @@ class IntervController extends Controller
 
      public function show()
     {
-
-       return View::make ('admin/intervs')
-           ->with('Intervs',Interv::all());
+            $Intervs = Interv::Paginate(3);
+        return view('admin.intervs', compact('Intervs'));
     }
 }
+
