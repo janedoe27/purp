@@ -180,9 +180,16 @@ Acacha\AdminLTETemplateLaravel\Providers\AdminLTETemplateServiceProvider::class,
          */
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
+        App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+
+        /*
+         * Acacha Llum Service Providers...
+         *
+         * See: https://github.com/acacha/llum
+         */
+        #llum_providers
 
     ],
 
@@ -235,6 +242,13 @@ Acacha\AdminLTETemplateLaravel\Providers\AdminLTETemplateServiceProvider::class,
 * Acacha AdminLTE template alias
 */
 'AdminLTE' => Acacha\AdminLTETemplateLaravel\Facades\AdminLTE::class,
+
+        /*
+         * Acacha Llum Aliases...
+         *
+         * See: https://github.com/acacha/llum
+         */
+        #llum_aliases
 
     ],
 
