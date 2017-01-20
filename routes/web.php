@@ -20,21 +20,10 @@ Route::get('/', function () {
 
 Route::get('admin/index', 'IntervController@show');
 
-Route::get('admin/index', function () {
-     $Users =User::Paginate(1);
 
-    return view('admin/index', [
-        'Users' => $Users
-    ]);
-});
+Route::get('admin/profiling', 'IntervController@showprofiling');
 
-Route::get('admin/profiling', function () {
-    return view('admin/profiling');
-});
-
-Route::get('admin/sette', function () {
-    return view('admin/sette');
-});
+Route::get('admin/sette', 'IntervController@showsette');
 
 
 Route::get('admin/intervs', 'IntervController@show');

@@ -37,5 +37,16 @@ class IntervController extends Controller
             $Intervs = Interv::Paginate(3);
         return view('admin.intervs', compact('Intervs'));
     }
-}
 
+
+
+ public function showprofiling(){
+               return view('admin/profiling');
+ }
+
+ public function showsette(){
+                return view('admin/sette');
+ }
+
+
+}
