@@ -174,7 +174,7 @@ return [
          */
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
+        App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
@@ -183,7 +183,6 @@ return [
          *
          * See: https://github.com/acacha/llum
          */
-        Acacha\AdminLTETemplateLaravel\Providers\AdminLTETemplateServiceProvider::class
         #llum_providers
 
     ],
@@ -202,7 +201,6 @@ return [
     'aliases' => [
 
         'App' => Illuminate\Support\Facades\App::class,
-        'Admin' => Acacha\AdminLTETemplateLaravel\Facades\AdminLTE::class,
         'Artisan' => Illuminate\Support\Facades\Artisan::class,
         'Auth' => Illuminate\Support\Facades\Auth::class,
         'Blade' => Illuminate\Support\Facades\Blade::class,
