@@ -19,7 +19,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                  @foreach ($Intervs->getCollection() as $Interv)
+                  @foreach ($intervs->getCollection() as $interv)
                 <tr>
                   <td>{{$Interv->first_name}}</td>
                   <td>Technology</td>
@@ -43,7 +43,7 @@
             <!-- /.box-body -->
           </div>
           <!-- /.box -->
-     {{ $Users->links() }}
+     {{-- {{ $Users->links() }} --}}
         </div>
         <!-- /.col -->
       </div>
