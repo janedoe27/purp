@@ -20,10 +20,13 @@ Route::get('/', function () {
 
 Route::get('admin', 'IntervController@show');
 
+Route::resource('admin/categories', 'CategoryController');
+Route::resource('admin/questions', 'QuestionController');
+Route::resource('admin/answers', 'AnswerController');
 
-Route::get('admin/profiling', 'IntervController@showprofiling');
+Route::get('admin/profile', 'IntervController@showprofile');
 
-Route::get('admin/sette', 'IntervController@showsette');
+Route::get('admin/settings', 'IntervController@showsetting');
 
 
 Route::get('admin/intervs', 'IntervController@show');
