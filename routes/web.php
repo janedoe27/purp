@@ -18,7 +18,7 @@ Route::get('/', function () {
 });
 
 
-Route::get('admin/index', 'IntervController@show');
+Route::get('admin', 'IntervController@show');
 
 
 Route::get('admin/profiling', 'IntervController@showprofiling');
