@@ -39,11 +39,11 @@ class IntervController extends Controller
 
 
 
- public function showprofiling(){
+ public function showprofile(){
                return view('admin/profiling');
  }
 
- public function showsette(){
+ public function showsetting(){
                 return view('admin/sette');
  }
 
