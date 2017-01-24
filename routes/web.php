@@ -17,20 +17,6 @@ Route::get('/', function () {
     return view('index');
 });
 
-
-Route::get('admin', 'IntervController@show');
-
-Route::resource('admin/categories', 'CategoryController');
-Route::resource('admin/questions', 'QuestionController');
-Route::resource('admin/answers', 'AnswerController');
-
-Route::get('admin/profile', 'IntervController@showprofile');
-
-Route::get('admin/settings', 'IntervController@showsetting');
-
-
-Route::get('admin/intervs', 'IntervController@show');
-
 // route to show the login form
 Route::get('logintern', array('uses' => 'LoginteruController@showLogin'));
 
@@ -49,11 +35,6 @@ Route::get('tickets/{ticket_id}', 'TicketsController@show');
 Route::post('comment', 'CommentsController@postComment');
 
 
-Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
-    Route::get('tickets', 'TicketsController@index');
-    Route::post('close_ticket/{ticket_id}', 'TicketsController@close');
-});
-
 Auth::routes();
 
 Route::get('/app', 'HomeController@index');
@@ -69,3 +50,31 @@ Route::get('/app', 'HomeController@index');
 
 Route::get('app/(:any)', array('as'=>'test', 'uses'=>'HomeController@view'));
 
+
+// API endpoints!
+Route::group(['prefix' => 'api', 'middleware' => 'auth'], function() {
+	Route::resource('categories', 'CategoryController');
+	Route::resource('questions', 'QuestionController');
+	Route::resource('answers', 'AnswerController');
+});
+
+
+
+// Admin only routes
+// Route::group(['middleware' => 'auth', 'middleware' => 'admin'], function () {
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
+
+    Route::get('tickets', 'TicketsController@index');
+    Route::post('close_ticket/{ticket_id}', 'TicketsController@close');
+
+	Route::get('admin', 'IntervController@show');
+	Route::get('admin/profile', 'IntervController@showprofile');
+
+	Route::get('admin/settings', 'IntervController@showsetting');
+
+
+	Route::get('admin/intervs', 'IntervController@show');
+
+	Route::get('admin/questions', 'QuestionController@admin');
+	Route::any('admin/questions/new', 'QuestionController@new');
+});
