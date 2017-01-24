@@ -51,15 +51,6 @@ Route::get('/app', 'HomeController@index');
 Route::get('app/(:any)', array('as'=>'test', 'uses'=>'HomeController@view'));
 
 
-// API endpoints!
-Route::group(['prefix' => 'api', 'middleware' => 'auth'], function() {
-	Route::resource('categories', 'CategoryController');
-	Route::resource('questions', 'QuestionController');
-	Route::resource('answers', 'AnswerController');
-});
-
-
-
 // Admin only routes
 // Route::group(['middleware' => 'auth', 'middleware' => 'admin'], function () {
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
@@ -70,10 +61,24 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 	Route::get('profile', 'IntervController@showprofile');
 	Route::get('settings', 'IntervController@showsetting');
 
-	Route::get('intervs', 'IntervController@show');
+	Route::get('interviews', 'IntervController@show');
+	Route::get('interviews/report', 'IntervController@report');
 
 	Route::get('questions', 'QuestionController@admin');
-	Route::any('questions/new', 'QuestionController@new');
-	
+	Route::get('questions/new', 'QuestionController@new');
+
+	Route::get('categories', 'CategoryController@admin');
+	Route::get('categories/new', 'CategoryController@new');
+
 	Route::get('', 'IntervController@show');
 });
+
+
+
+// API endpoints!
+Route::group(['prefix' => 'api', 'middleware' => 'auth'], function() {
+	Route::resource('categories', 'CategoryController');
+	Route::resource('questions', 'QuestionController');
+	Route::resource('answers', 'AnswerController');
+});
+
