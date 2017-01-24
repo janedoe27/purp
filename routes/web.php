@@ -67,14 +67,13 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('tickets', 'TicketsController@index');
     Route::post('close_ticket/{ticket_id}', 'TicketsController@close');
 
-	Route::get('admin', 'IntervController@show');
-	Route::get('admin/profile', 'IntervController@showprofile');
+	Route::get('profile', 'IntervController@showprofile');
+	Route::get('settings', 'IntervController@showsetting');
 
-	Route::get('admin/settings', 'IntervController@showsetting');
+	Route::get('intervs', 'IntervController@show');
 
-
-	Route::get('admin/intervs', 'IntervController@show');
-
-	Route::get('admin/questions', 'QuestionController@admin');
-	Route::any('admin/questions/new', 'QuestionController@new');
+	Route::get('questions', 'QuestionController@admin');
+	Route::any('questions/new', 'QuestionController@new');
+	
+	Route::get('', 'IntervController@show');
 });
