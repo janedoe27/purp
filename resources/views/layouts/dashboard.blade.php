@@ -243,13 +243,13 @@ desired effect
 
       <!-- Sidebar Menu -->
       <ul class="sidebar-menu">
-        <li class="header">HEADER</li>
+        <li class="header">Menu</li>
         <!-- Optionally, you can add icons to the links -->
-        <li class="active"><a href="{{url('admin/index') }}"><i class="fa fa-link"></i> <span>Dashboard</span></a></li>
+        <li class="active"><a href="{{url('admin') }}"><i class="fa fa-link"></i> <span>Dashboard</span></a></li>
         <li><a href="{{url('admin/profile') }}"><i class="fa fa-link"></i> <span>Profile</span></a></li>
         <li><a href="{{url('admin/settings') }}"><i class="fa fa-link"></i> <span>Settings</span></a></li>
         <li class="treeview">
-          <a href="#"><i class="fa fa-link"></i> <span>Intervs</span>
+          <a href="#"><i class="fa fa-link"></i> <span>Interview</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
