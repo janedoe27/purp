@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+
+use App\Category;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -14,8 +16,43 @@ class CategoryController extends Controller
     
     public function __construct()
     {
-        $this->middleware('admin');
-    };
+        $this->middleware('auth');
+    }
+
+
+    /**
+     * Display a question view
+     *
+     * @return Response
+     */
+    public function admin()
+    {
+        $categories = Category::all();
+
+        return view('admin.categories.index', ['categories' => $categories]);
+    }
+
+    /**
+     * Create New Question
+     *
+     * @return Response
+     */
+    public function new(Request $request)
+    {
+        $this->validate($request, [
+            'name'     => 'required',
+            'description'  => 'required'
+        ]);
+
+        $category = new Category([
+            'name'     => $request->input('name'),
+            'description'     => $request->input('description'),
+        ]);
+
+        $category->save();
+
+        return redirect()->back()->with("status", "Category created successfully.");
+    }
 
     public function index()
     {
