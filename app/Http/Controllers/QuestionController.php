@@ -32,6 +32,20 @@ class QuestionController extends Controller
     }
 
     /**
+     * Create New Question
+     *
+     * @return Response
+     */
+    public function new()
+    {
+        return array(
+          1 => "John",
+          2 => "Mary",
+          3 => "Steven"
+        );
+    }
+
+    /**
      * Display a listing of the resource
      *
      * @return Response
