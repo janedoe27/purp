@@ -19,36 +19,39 @@ Route::get('/', function () {
 
 // route to show the login form
 Route::get('logintern', array('uses' => 'LoginteruController@showLogin'));
-
 // route to process the form
 Route::post('loginterv', array('uses' => 'LogintervController@doLogin'));
 
 
-Route::post('/sette/test', 'TestController@store');
-Route::post('/profiling/go', 'intervController@store');
-Route::post('/sette/test/s', 'TestController@show');
-
-Route::get('new_ticket', 'TicketsController@create');
-Route::post('new_ticket', 'TicketsController@store');
-Route::get('my_tickets', 'TicketsController@userTickets');
-Route::get('tickets/{ticket_id}', 'TicketsController@show');
-Route::post('comment', 'CommentsController@postComment');
-
-
 Auth::routes();
 
-Route::get('/app', 'HomeController@index');
+// All Authenticated Users route
+Route::group(['prefix' => 'app', 'middleware' => 'auth'], function () {
+	Route::get('/', 'HomeController@index');
 
- Route::get('/app', function () {
-    $questtests = Questtest::simplePaginate(1);
+	Route::get('/', function () {
+	    $questtests = Questtest::simplePaginate(1);
 
 
-    return view('app', [
-        'questtests' => $questtests
-    ]);
+	    return view('app', [
+	        'questtests' => $questtests
+	    ]);
+	});
+
+	Route::get('/(:any)', array('as'=>'test', 'uses'=>'HomeController@view'));
+
+
+	Route::get('new_ticket', 'TicketsController@create');
+	Route::post('new_ticket', 'TicketsController@store');
+	Route::post('/sette/test', 'TestController@store');
+	Route::post('/profiling/go', 'intervController@store');
+	Route::post('/sette/test/s', 'TestController@show');
+
+	Route::get('my_tickets', 'TicketsController@userTickets');
+	Route::get('tickets/{ticket_id}', 'TicketsController@show');
+	Route::post('comment', 'CommentsController@postComment');
+
 });
-
-Route::get('app/(:any)', array('as'=>'test', 'uses'=>'HomeController@view'));
 
 
 // Admin only routes
