@@ -181,8 +181,9 @@ desired effect
             <ul class="dropdown-menu">
               <!-- The user image in the menu -->
               <li class="user-header">
-                <img src="{{ Auth::user()->profile_pics }}" class="img-circle" alt="User Image">
-
+                <img src="{{ url('/dist/img/avatar.png') }}" class="img-circle" alt="{{Auth::user()->first_name . ' ' . Auth::user()->last_name }}">
+                <!--<img src="{{ Auth::user()->profile_pics || url('/dist/img/avatar.png') }}" class="img-circle" alt="User Image">
+                -->
                 <p>
                   {{ Auth::user()->first_name }} - Staff
                   <small> since Nov. 2012</small>
@@ -192,7 +193,7 @@ desired effect
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">Profile</a>
+                  <a href="{{url('admin/profile') }}" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
                   <a href="{{ url('/logout') }}"class="btn btn-default btn-flat"
@@ -220,12 +221,12 @@ desired effect
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+          <img src="/dist/img/avatar.png" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
           <p>{{ Auth::user()->first_name }}</p>
           <!-- Status -->
-          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+          <a href=""><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
 
@@ -246,19 +247,47 @@ desired effect
         <li class="header">Menu</li>
         <!-- Optionally, you can add icons to the links -->
         <li class="active"><a href="{{url('admin') }}"><i class="fa fa-link"></i> <span>Dashboard</span></a></li>
-        <li><a href="{{url('admin/profile') }}"><i class="fa fa-link"></i> <span>Profile</span></a></li>
-        <li><a href="{{url('admin/settings') }}"><i class="fa fa-link"></i> <span>Settings</span></a></li>
+
+        <li><a href="{{url('admin/tickets') }}"><i class="fa fa-link"></i> <span>Tickets</span></a></li>
+
         <li class="treeview">
-          <a href="#"><i class="fa fa-link"></i> <span>Interview</span>
+          <a href="#"><i class="fa fa-link"></i> <span>Interviews</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{{url('admin/intervs') }}">List</a></li>
-            <li><a href="#">Link in level 2</a></li>
+            <li><a href="{{url('admin/interviews') }}">View Candidates</a></li>
+            <li><a href="{{url('admin/interviews/report') }}">Reports</a></li>
           </ul>
         </li>
+
+        <li class="treeview">
+          <a href="#"><i class="fa fa-link"></i> <span>Categories</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="{{url('admin/categories') }}">List Categories</a></li>
+            <li><a href="{{url('admin/categories/new') }}">Add Category</a></li>
+          </ul>
+        </li>
+
+        <li class="treeview">
+          <a href="#"><i class="fa fa-link"></i> <span>Questions</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="{{url('admin/questions') }}">List Questions</a></li>
+            <li><a href="{{url('admin/questions/new') }}">Add Question</a></li>
+            <li><a href="{{url('admin/questions/import') }}">Import Question</a></li>
+          </ul>
+        </li>
+        <hr class="divider">
+        <li><a href="{{url('admin/settings') }}"><i class="fa fa-link"></i> <span>Settings</span></a></li>
       </ul>
       <!-- /.sidebar-menu -->
     </section>
