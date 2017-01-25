@@ -27,7 +27,7 @@ class QuestionController extends Controller
     public function admin()
     {
         $questions = Question::all();
-        Log::info($questions);
+        
         return view('admin.questions.index', ['questions' => $questions]);
     }
 
