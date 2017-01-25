@@ -17,16 +17,19 @@ Route::get('/', function () {
     return view('index');
 });
 
-// route to show the login form
-Route::get('logintern', array('uses' => 'LoginteruController@showLogin'));
-// route to process the form
-Route::post('loginterv', array('uses' => 'LogintervController@doLogin'));
-
 
 Auth::routes();
 
-// All Authenticated Users route
+
+// Authenticated users only routes
 Route::group(['prefix' => 'app', 'middleware' => 'auth'], function () {
+
+    Route::get('tickets', 'TicketsController@index');
+    Route::post('close_ticket/{ticket_id}', 'TicketsController@close');
+
+	Route::get('profile', 'IntervController@showprofile');
+	Route::get('settings', 'IntervController@showsetting');
+
 	Route::get('/', 'HomeController@index');
 
 	Route::get('/', function () {
@@ -51,27 +54,19 @@ Route::group(['prefix' => 'app', 'middleware' => 'auth'], function () {
 	Route::get('tickets/{ticket_id}', 'TicketsController@show');
 	Route::post('comment', 'CommentsController@postComment');
 
-});
-
-
-// Admin only routes
-// Route::group(['middleware' => 'auth', 'middleware' => 'admin'], function () {
-Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
-
-    Route::get('tickets', 'TicketsController@index');
-    Route::post('close_ticket/{ticket_id}', 'TicketsController@close');
-
-	Route::get('profile', 'IntervController@showprofile');
-	Route::get('settings', 'IntervController@showsetting');
-
 	Route::get('interviews', 'IntervController@show');
 	Route::get('interviews/report', 'IntervController@report');
 
-	Route::get('questions', 'QuestionController@admin');
-	Route::get('questions/new', 'QuestionController@new');
 
-	Route::get('categories', 'CategoryController@admin');
-	Route::get('categories/new', 'CategoryController@new');
+	// Admin only routes
+	Route::group(['middleware' => 'auth'], function () {
+		Route::get('questions', 'QuestionController@admin');
+		Route::get('questions/new', 'QuestionController@new');
+
+		Route::get('categories', 'CategoryController@admin');
+		Route::get('categories/new', 'CategoryController@new');
+
+	});
 
 	Route::get('', 'IntervController@show');
 });
