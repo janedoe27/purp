@@ -11,7 +11,7 @@
                 <thead>
                  
                 <tr>
-                  <th>Interv Name</th>
+                  <th>Interviewee Name</th>
                   <th>Unit</th>
                   <th>Tests</th>
                   <th>Questions Answered</th>
@@ -29,15 +29,6 @@
                 </tr>
                                 </tbody>
                   @endforeach
-                <tfoot>
-                <tr>
-                 <th>Interv Name</th>
-                  <th>Unit</th>
-                  <th>Tests</th>
-                  <th>Questions Answered</th>
-                  <th>Score</th>
-                </tr>
-                </tfoot>
               </table>
             </div>
             <!-- /.box-body -->
