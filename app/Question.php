@@ -19,7 +19,7 @@ class Question extends Model
         );
 
         return Validator::make($input,$rules);
-    };
+    }
 
     public function category(){
 	    return $this->hasOne(Category::class);
