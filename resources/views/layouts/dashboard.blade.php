@@ -302,12 +302,11 @@ desired effect
         Page Header
         <small>Optional description</small>
       </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
-        <li class="active">Here</li>
-      </ol>
+      <h4 class="breadcrumb" style="padding-bottom: 10px">
+        @yield('new_resource')
+      </h4>
     </section>
-
+    <br>
     <!-- Main content -->
     <section class="content">
 
@@ -421,5 +420,6 @@ desired effect
      Both of these plugins are recommended to enhance the
      user experience. Slimscroll is required when using the
      fixed layout. -->
+@yield('local_js')
 </body>
 </html>
