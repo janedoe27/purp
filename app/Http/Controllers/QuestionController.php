@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Question;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
 
 class QuestionController extends Controller
@@ -24,11 +26,9 @@ class QuestionController extends Controller
      */
     public function admin()
     {
-        return array(
-          1 => "John",
-          2 => "Mary",
-          3 => "Steven"
-        );
+        $questions = Question::all();
+        Log::info($questions);
+        return view('admin.questions.index', ['questions' => $questions]);
     }
 
     /**
@@ -37,6 +37,21 @@ class QuestionController extends Controller
      * @return Response
      */
     public function new()
+    {
+        return array(
+          1 => "John",
+          2 => "Mary",
+          3 => "Steven"
+        );
+    }
+
+
+    /**
+     * Import Questions from CSV.
+     *
+     * @return Response
+     */
+    public function import()
     {
         return array(
           1 => "John",
