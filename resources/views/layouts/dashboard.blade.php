@@ -193,7 +193,7 @@ desired effect
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="{{url('admin/profile') }}" class="btn btn-default btn-flat">Profile</a>
+                  <a href="{{url('app/profile') }}" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
                   <a href="{{ url('/logout') }}"class="btn btn-default btn-flat"
@@ -248,7 +248,7 @@ desired effect
         <!-- Optionally, you can add icons to the links -->
         <li class="active"><a href="{{url('admin') }}"><i class="fa fa-link"></i> <span>Dashboard</span></a></li>
 
-        <li><a href="{{url('admin/tickets') }}"><i class="fa fa-link"></i> <span>Tickets</span></a></li>
+        <li><a href="{{url('app/tickets') }}"><i class="fa fa-link"></i> <span>Tickets</span></a></li>
 
         <li class="treeview">
           <a href="#"><i class="fa fa-link"></i> <span>Interviews</span>
@@ -257,8 +257,8 @@ desired effect
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{{url('admin/interviews') }}">View Candidates</a></li>
-            <li><a href="{{url('admin/interviews/report') }}">Reports</a></li>
+            <li><a href="{{url('app/interviews') }}">View Candidates</a></li>
+            <li><a href="{{url('app/interviews/report') }}">Reports</a></li>
           </ul>
         </li>
 
@@ -269,8 +269,8 @@ desired effect
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{{url('admin/categories') }}">List Categories</a></li>
-            <li><a href="{{url('admin/categories/new') }}">Add Category</a></li>
+            <li><a href="{{url('app/categories') }}">List Categories</a></li>
+            <li><a href="{{url('app/categories/new') }}">Add Category</a></li>
           </ul>
         </li>
 
@@ -281,13 +281,13 @@ desired effect
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{{url('admin/questions') }}">List Questions</a></li>
-            <li><a href="{{url('admin/questions/new') }}">Add Question</a></li>
-            <li><a href="{{url('admin/questions/import') }}">Import Question</a></li>
+            <li><a href="{{url('app/questions') }}">List Questions</a></li>
+            <li><a href="{{url('app/questions/new') }}">Add Question</a></li>
+            <li><a href="{{url('app/questions/import') }}">Import Question</a></li>
           </ul>
         </li>
         <hr class="divider">
-        <li><a href="{{url('admin/settings') }}"><i class="fa fa-link"></i> <span>Settings</span></a></li>
+        <li><a href="{{url('app/settings') }}"><i class="fa fa-link"></i> <span>Settings</span></a></li>
       </ul>
       <!-- /.sidebar-menu -->
     </section>
