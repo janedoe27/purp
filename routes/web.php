@@ -62,6 +62,7 @@ Route::group(['prefix' => 'app', 'middleware' => 'auth'], function () {
 	Route::group(['middleware' => 'auth'], function () {
 		Route::get('questions', 'QuestionController@admin');
 		Route::get('questions/new', 'QuestionController@new');
+		Route::get('questions/import', 'QuestionController@import');
 
 		Route::get('categories', 'CategoryController@admin');
 		Route::get('categories/new', 'CategoryController@new');
