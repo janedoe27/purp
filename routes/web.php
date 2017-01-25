@@ -69,7 +69,7 @@ Route::group(['prefix' => 'app', 'middleware' => 'auth'], function () {
 
 	});
 
-	Route::get('', 'IntervController@show');
+	Route::get('', 'IntervController@showsetting');
 });
 
 
