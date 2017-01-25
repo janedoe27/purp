@@ -11,7 +11,7 @@
                 <thead>
                  
                 <tr>
-                  <th>Interviewee Name</th>
+                  <th>Candidate's Name</th>
                   <th>Unit</th>
                   <th>Tests</th>
                   <th>Questions Answered</th>
