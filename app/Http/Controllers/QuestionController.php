@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Question;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
+
+
+use App\Question;
+use App\Category;
+
 
 class QuestionController extends Controller
 {
@@ -26,9 +30,22 @@ class QuestionController extends Controller
      */
     public function admin()
     {
+
+        Log::info('Helllo');
+
+        $categories = Category::all();
         $questions = Question::all();
+
+        if (!$categories) {
+            return redirect()->action('CategoryController@admin')->with("status", "Category created successfully.");
+        }
+
+        $locals = [
+            'questions' => $questions,
+            'categories' => $categories
+        ];
         
-        return view('admin.questions.index', ['questions' => $questions]);
+        return view('admin.questions.index', $locals);
     }
 
     /**
