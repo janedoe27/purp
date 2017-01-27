@@ -23,9 +23,9 @@
                   <tr>
                     <td>{{$category->name}}</td>
                     <td>{{$category->description}}</td>
-                    <td class="pull-right">
-                        <a href="{{url('admin/category/edit', $category->id)}}" class="btn"><i class="fa fa-pencil"></i></a> 
-                        <a href="{{url('admin/category/delete', $category->id)}}" class="btn"><i class="text-danger fa fa-close"></i></a> 
+                    <td>
+                        <a href="{{url('app/categories/edit', $category->id)}}" class="btn"><i class="fa text-success fa-pencil"></i></a> 
+                        <a href="{{url('app/categories/delete', $category->id)}}" class="btn"><i class="text-danger fa fa-close"></i></a> 
                     </td>
                   </tr>
                   @endforeach
