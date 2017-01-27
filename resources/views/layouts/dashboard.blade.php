@@ -7,6 +7,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <title>GTB | EX</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -248,7 +249,6 @@ desired effect
         <!-- Optionally, you can add icons to the links -->
         <li class="active"><a href="{{url('app') }}"><i class="fa fa-link"></i> <span>Dashboard</span></a></li>
 
-        <li><a href="{{url('app/tickets') }}"><i class="fa fa-link"></i> <span>Tickets</span></a></li>
 
         <li class="treeview">
           <a href="#"><i class="fa fa-link"></i> <span>Interviews</span>
@@ -257,20 +257,8 @@ desired effect
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{{url('app/interviews') }}">View Candidates</a></li>
+            <li><a href="{{url('app/interviews') }}">Candidates</a></li>
             <li><a href="{{url('app/interviews/report') }}">Reports</a></li>
-          </ul>
-        </li>
-
-        <li class="treeview">
-          <a href="#"><i class="fa fa-link"></i> <span>Categories</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="{{url('app/categories') }}">List Categories</a></li>
-            <li><a href="{{url('app/categories/new') }}">Add Category</a></li>
           </ul>
         </li>
 
@@ -282,10 +270,21 @@ desired effect
           </a>
           <ul class="treeview-menu">
             <li><a href="{{url('app/questions') }}">List Questions</a></li>
-            <li><a href="{{url('app/questions/new') }}">Add Question</a></li>
-            <li><a href="{{url('app/questions/import') }}">Import Question</a></li>
+            <li><a href="{{url('app/categories') }}">List Categories</a></li>
           </ul>
         </li>
+
+        <li class="treeview">
+          <a href="#"><i class="fa fa-link"></i> <span>Tickets</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+        <li><a href="{{url('app/tickets') }}"><i class="fa fa-link"></i> <span>View Tickets</span></a></li>
+          </ul>
+        </li>
+
         <hr class="divider">
         <li><a href="{{url('app/settings') }}"><i class="fa fa-link"></i> <span>Settings</span></a></li>
       </ul>
