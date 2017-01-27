@@ -49,22 +49,23 @@
               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
               <h4 class="modal-title" id="myModalLabel">New Category</h4>
             </div>
+            <form role="form" action="/app/categories/new" method="post">
+            <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
             <div class="modal-body">
-              <form role="form" action="/app/categories/new" method="post">
                 <div class="form-group">
                   <label>Name</label>
-                  <input type="text" name="name" class="form-control" placeholder="Enter ..." ">
+                  <input type="text" name="name" required class="form-control" placeholder="Enter ..." ">
                 </div>
                   <div class="form-group">
                   <label>Description</label>
-                  <textarea name="description" class="form-control" rows="3" placeholder="Enter ..."></textarea>
+                  <textarea name="description" required class="form-control" rows="3" placeholder="Enter ..."></textarea>
                 </div>
-              </form>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
               <button type="submit" class="btn btn-primary">Save</button>
             </div>
+            </form>
           </div>
         </div>
       </div>
