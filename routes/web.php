@@ -65,7 +65,7 @@ Route::group(['prefix' => 'app', 'middleware' => 'auth'], function () {
 		Route::get('questions/import', 'QuestionController@import');
 
 		Route::get('categories', 'CategoryController@admin');
-		Route::get('categories/new', 'CategoryController@new');
+		Route::post('categories/new', 'CategoryController@new');
 
 	});
 
