@@ -73,26 +73,28 @@
                 </div>
                 <hr class="divider">
                 <label>Answers</label>
-                <div class="form-group">
-                    <div class="input-group answers">
-                        <input type="text" name="answers[0][description]" class="form-control input-lg" required>
-                        <span class="input-group-addon">
-                          <input type="checkbox" class="isCorrect" name="answers[0][isCorrect]">
-                          <label><small>Correct</small></label>
-                        </span>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="input-group answers">
-                        <input type="text" name="answers[1][description]" class="form-control input-lg" required>
-                        <span class="input-group-addon">
-                          <input type="checkbox" class="isCorrect" name="answers[1][isCorrect]">
-                          <label><small>Correct</small></label>
-                        </span>
-                    </div>
+                <div class=" answer-group">
+                  <div class="form-group">
+                      <div class="input-group answers">
+                          <input type="text" name="answers[0][description]" class="form-control input-lg" required>
+                          <span class="input-group-addon">
+                            <input type="checkbox" class="isCorrect" name="answers[0][isCorrect]">
+                            <label><small>Correct</small></label>
+                          </span>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <div class="input-group answers">
+                          <input type="text" name="answers[1][description]" class="form-control input-lg" required>
+                          <span class="input-group-addon">
+                            <input type="checkbox" class="isCorrect" name="answers[1][isCorrect]">
+                            <label><small>Correct</small></label>
+                          </span>
+                      </div>
+                  </div>
                 </div>
                 <div class="form-group pull-right">
-                    <a href="">Add More</a> | <a class="text-danger" href="">Remove Newest</a> 
+                    <a href id="addOne">Add More</a>  <a class="text-danger hidden" href="" id="removeOne">Remove Newest</a> 
                 </div>
                 <br>
             </div>
@@ -107,9 +109,34 @@
   @endsection
   @section('local_js')
   <script type="text/javascript">
+
     $(function() {
+
+        var parent = $('.answer-group');
+
+        if (parent.length < 2) {
+          $('#removeOne').show();
+        }
+
         $("#importTrigger").click(function() {
             $("#bulkQuestions").trigger('click');
+        });
+        $("#addOne").click(function(e) {
+          e.preventDefault();
+          let child = parent.last().html()
+          console.log(parent.last());
+          parent.append(child);
+          return false;
+        })
+        $("#removeOne").click(function(e) {
+          e.preventDefault();
+          let parent = $('.answer-group');
+          if (parent.length < 2) {
+            parent.last().remove();
+          } else {
+            $('#removeOne').hide();
+          }
+          return false;
         })
     })
   </script>
