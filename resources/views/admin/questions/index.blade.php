@@ -53,25 +53,29 @@
               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
               <h4 class="modal-title" id="myModalLabel">Add New Question</h4>
             </div>
+            <form role="form" action="/app/categories/new" method="post">
             <div class="modal-body">
-              <form role="form" action="/app/categories/new" method="post">
                 <div class="form-group">
                   <label>Category</label>
-                  <select name="category" id="" class="form-control input-lg"></select>
+                  <select name="category" id="" class="form-control input-lg" required>
+                    @foreach ($categories as $category)
+                    <option value="{{$category->id}}">{{$category->name}}</option>
+                    @endforeach
+                  </select>
                 </div>
                 <div class="form-group">
                   <label>Text</label>
-                  <input type="text" name="description" class="form-control input-lg" placeholder="Enter ..." ">
+                  <input type="text" name="description" class="form-control input-lg" placeholder="Enter ..."  required>
                 </div>
                 <div class="form-group">
                   <label>Weight</label>
-                  <input type="number" step="0.5" name="weight" class="form-control input-lg" placeholder="Select" ">
+                  <input type="number" step="0.5" name="weight" class="form-control input-lg" placeholder="Select"  required>
                 </div>
                 <hr class="divider">
                 <label>Answers</label>
                 <div class="form-group">
                     <div class="input-group answers">
-                        <input type="text" name="answers[0][description]" class="form-control input-lg">
+                        <input type="text" name="answers[0][description]" class="form-control input-lg" required>
                         <span class="input-group-addon">
                           <input type="checkbox" class="isCorrect" name="answers[0][isCorrect]">
                           <label><small>Correct</small></label>
@@ -80,7 +84,7 @@
                 </div>
                 <div class="form-group">
                     <div class="input-group answers">
-                        <input type="text" name="answers[1][description]" class="form-control input-lg">
+                        <input type="text" name="answers[1][description]" class="form-control input-lg" required>
                         <span class="input-group-addon">
                           <input type="checkbox" class="isCorrect" name="answers[1][isCorrect]">
                           <label><small>Correct</small></label>
@@ -91,13 +95,13 @@
                     <a href="">Add More</a> | <a class="text-danger" href="">Remove Newest</a> 
                 </div>
                 <br>
-              </form>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-default btn-lg" data-dismiss="modal">Close</button>
               <button type="submit" class="btn btn-primary btn-lg">Save</button>
             </div>
           </div>
+          </form>
         </div>
       </div>
   @endsection
