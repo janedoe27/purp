@@ -1,8 +1,8 @@
 @extends('layouts.dashboard')
 
 @section('new_resource')
-<button class="btn btn-default" id="importTrigger">Import Questions</button>
 <button class="btn btn-success" data-toggle="modal" data-target="#formModal">New Question</button>
+<button class="btn btn-default" id="importTrigger">Import Questions</button>
 <input type="file" accept="text/csv|" hidden name="questions" class="hidden" id="bulkQuestions">
 @endsection
 @section('content')
@@ -28,8 +28,8 @@
                     <td>{{$question->name}}</td>
                     <td>{{$question->description}}</td>
                     <td class="pull-right">
-                        <a href="{{url('admin/question/edit', $question->id)}}" class="btn"><i class="fa fa-pencil"></i></a> 
-                        <a href="{{url('admin/question/delete', $question->id)}}" class="btn"><i class="text-danger fa fa-close"></i></a> 
+                        <a href="{{url('app/questions/edit', $question->id)}}" class="btn"><i class="fa text-default fa-pencil"></i></a> 
+                        <a href="{{url('app/questions/delete', $question->id)}}" class="btn"><i class="text-danger fa fa-close"></i></a> 
                     </td>
                   </tr>
                   @endforeach
