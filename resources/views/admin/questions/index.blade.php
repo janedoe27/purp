@@ -36,7 +36,7 @@
                     </ol>
                     </td>
                     <td>
-                        <a href="{{url('app/questions/edit', $question->id)}}" class="btn"><i class="fa text-default fa-pencil"></i></a> 
+                        <a href="{{url('app/questions/edit', $question->id)}}" class="btn" disabled><i class="fa text-default fa-pencil"></i></a> 
                         <a href="{{url('app/questions/delete', $question->id)}}" class="btn"><i class="text-danger fa fa-close"></i></a> 
                     </td>
                   </tr>
