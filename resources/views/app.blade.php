@@ -30,7 +30,7 @@
         </div>
       @endforeach
      </div>
-        <div class="row center">
+        <div class="row center hide">
           {{$questions->links()}}
         </div>
   </div>
