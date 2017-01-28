@@ -156,20 +156,18 @@
 
         $(":checkbox").change(function() {
          
-          var $this = $(this);
-          
+          let $this = $(this);
+          $this.val($this.prop('checked'));
+
           parent.find(":checkbox:not(:checked)").not($this).attr("disabled", this.checked);
 
         });
 
         $("#questionForm").submit(function(e) {
 
-          let checkedBox = $(this).find('.isCorrect:checked').then(function(list) {
-            alert(list)
-            alert('wharknfskfjs')
-          })
+          let checkedBox = $(this).find('.isCorrect:checked');
 
-          if(checkedBox.empty()) {
+          if(!checkedBox.length) {
             alert('You must designate one of the answers as the correct answer!')
             e.preventDefault()
             return false
