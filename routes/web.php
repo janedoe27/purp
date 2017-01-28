@@ -47,7 +47,7 @@ Route::group(['prefix' => 'app', 'middleware' => 'auth'], function () {
 	Route::post('comment', 'CommentsController@postComment');
 
 	Route::get('interviews', 'IntervController@show');
-	Route::get('interviews/report', 'IntervController@report');
+	Route::get('interviews/report', 'ChartsController@chart');
 
 
 	// Admin only routes
@@ -62,11 +62,11 @@ Route::group(['prefix' => 'app', 'middleware' => 'auth'], function () {
 		Route::post('categories/new', 'CategoryController@new');
 		Route::get('categories/delete/{id}', 'CategoryController@destroy');
 
+
 	});
 
 	Route::get('', 'IntervController@showsetting');
 });
-
 
 
 // API endpoints!
