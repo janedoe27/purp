@@ -11,6 +11,10 @@ class Answer extends Model
         'description', 'isCorrect'
     ]; 
 
+    protected $attributes = array(
+       'isCorrect' => false,
+    );
+
     public static function validator($input){
 
         $rules = array(
