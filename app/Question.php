@@ -11,6 +11,8 @@ class Question extends Model
         'description', 'weight', 'category_id'
     ]; 
 
+    protected $hidden = array('created_at', 'updated_at');
+
     public static function validator($input){
 
         $rules = array(
