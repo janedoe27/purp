@@ -55,13 +55,21 @@ class QuestionController extends Controller
      */
     public function new(Request $request)
     {
-        // Log::info($request, 'Error log');
-        error_log($request);
-        return array(
-          1 => "John",
-          2 => "Mary",
-          3 => "Steven"
-        );
+        $input = $request->all();
+
+        $question = new Question([
+            'description' => $input['description'],
+            'weight' => $input['weight'],
+            'category' => $input['category']
+        ]);
+
+        $question->save();
+
+        foreach ($input['answers'] as $answer) {
+            $question->answers()->create($answer);
+        }
+
+        return redirect()->back()->with("status", "Question created successfully.");
     }
 
 
