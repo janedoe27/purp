@@ -53,8 +53,10 @@ class QuestionController extends Controller
      *
      * @return Response
      */
-    public function new()
+    public function new(Request $request)
     {
+        // Log::info($request, 'Error log');
+        error_log($request);
         return array(
           1 => "John",
           2 => "Mary",
