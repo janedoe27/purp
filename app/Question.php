@@ -8,14 +8,15 @@ class Question extends Model
 {
     //
     protected $fillable = [
-        'description', 'weight'
+        'description', 'weight', 'category_id'
     ]; 
 
     public static function validator($input){
 
         $rules = array(
             'description' => 'required|description',
-            'weight' => 'required|weight'
+            'weight' => 'required|weight',
+            'category_id' => 'required|category_id'
         );
 
         return Validator::make($input,$rules);
