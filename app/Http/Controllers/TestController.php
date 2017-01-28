@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use Input, Validator, Redirect;
 use App\questtest;
+use App\Question;
 use App\app;
 use App\Http\Requests;
 use App\Http\Controllers\controller;
@@ -15,14 +16,14 @@ class TestController extends Controller
     //
      public function store(Request $request)
     {
-       $questtest = new Questtest;
-    $questtest->question = $request->question;
-     $questtest->answer1 = $request->answer1;
+      $questtest = new Questtest;
+      $questtest->question = $request->question;
+      $questtest->answer1 = $request->answer1;
       $questtest->correct = $request->correct;
-       $questtest->answer3 = $request->answer3;
-     $questtest->unit = $request->unit;
+      $questtest->answer3 = $request->answer3;
+      $questtest->unit = $request->unit;
       $questtest->point = $request->point;
-    $questtest->save();
+      $questtest->save();
 
 
             return Redirect::to('admin/sette')
@@ -30,6 +31,13 @@ class TestController extends Controller
 
         
     }
+
+    public function new()
+    {
+
+       return view('app')->with('questtests',Question::simplePaginate(1));
+    }
+
 
     public function show()
     {
