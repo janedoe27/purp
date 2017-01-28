@@ -94,9 +94,9 @@ class QuestionController extends Controller
      *
      * @return Response
      */
-    public function index(Request $request, Guard $auth)
+    public function index(Request $request)
     {   
-        print_r($auth->user());
+
         return Question::with('answers')->paginate(1);
     }
     /**
