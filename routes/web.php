@@ -30,16 +30,8 @@ Route::group(['prefix' => 'app', 'middleware' => 'auth'], function () {
 	Route::get('profile', 'IntervController@showprofile');
 	Route::get('settings', 'IntervController@showsetting');
 
-	Route::get('/', 'HomeController@index');
 
-	Route::get('/', function () {
-	    $questtests = Questtest::simplePaginate(1);
-
-
-	    return view('app', [
-	        'questtests' => $questtests
-	    ]);
-	});
+	Route::get('/test', 'TestController@new');
 
 	Route::get('/(:any)', array('as'=>'test', 'uses'=>'HomeController@view'));
 
