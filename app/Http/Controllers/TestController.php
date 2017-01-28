@@ -35,7 +35,7 @@ class TestController extends Controller
     public function new()
     {
 
-       return view('app')->with('questtests',Question::simplePaginate(1));
+       return view('app')->with('questions', Question::simplePaginate(1));
     }
 
 
