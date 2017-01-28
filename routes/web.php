@@ -68,6 +68,7 @@ Route::group(['prefix' => 'app', 'middleware' => 'auth'], function () {
 
 		Route::get('categories', 'CategoryController@admin');
 		Route::post('categories/new', 'CategoryController@new');
+		Route::get('categories/delete/{id}', 'CategoryController@destroy');
 
 	});
 
