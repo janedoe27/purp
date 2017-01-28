@@ -62,7 +62,9 @@ Route::group(['prefix' => 'app', 'middleware' => 'auth'], function () {
 	Route::group(['middleware' => 'auth'], function () {
 		Route::get('questions', 'QuestionController@admin');
 		Route::post('questions/new', 'QuestionController@new');
-		Route::get('questions/import', 'QuestionController@import');
+		Route::post('questions/import', 'QuestionController@import');
+
+		Route::get('questions/delete/{id}', 'QuestionController@destroy');
 
 		Route::get('categories', 'CategoryController@admin');
 		Route::post('categories/new', 'CategoryController@new');
