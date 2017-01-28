@@ -28,14 +28,14 @@ class User extends Authenticatable
     ];
 
     public function comments()
-{
-    return $this->hasMany(Comment::class);
-}
-public function tickets()
-{
-    return $this->hasMany(Ticket::class);
-}
- public function setNameAttribute($tests1)
+    {
+        return $this->hasMany(Comment::class);
+    }
+    public function tickets()
+    {
+        return $this->hasMany(Ticket::class);
+    }
+    public function setNameAttribute($tests1)
     {
         $this->attributes['name'] = trim($tests1) !== '' ? $tests1 : null;
     }
