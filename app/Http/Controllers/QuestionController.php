@@ -31,8 +31,6 @@ class QuestionController extends Controller
     public function admin()
     {
 
-        Log::info('Helllo');
-
         $categories = Category::all();
         $questions = Question::all();
 
@@ -56,20 +54,23 @@ class QuestionController extends Controller
     public function new(Request $request)
     {
         $input = $request->all();
-        return print_r($input);
-        // $question = new Question([
-        //     'description' => $input['description'],
-        //     'weight' => $input['weight'],
-        //     'category' => $input['category']
-        // ]);
 
-        // $question->save();
+        $question = new Question([
+            'description' => $input['description'],
+            'weight' => $input['weight'],
+            'category_id' => $input['category']
+        ]);
 
-        // foreach ($input['answers'] as $answer) {
-        //     $question->answers()->create($answer);
-        // }
+        $question->save();
 
-        // return redirect()->back()->with("status", "Question created successfully.");
+        foreach ($input['answers'] as $answer) {
+
+            $answer['isCorrect'] = (array_key_exists('isCorrect', $answer) ? true : false);
+
+            $question->answers()->create($answer);
+        }
+
+        return redirect()->back()->with("status", "Question created successfully.");
     }
 
 
