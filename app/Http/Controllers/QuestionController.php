@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
+use Illuminate\Contracts\Auth\Guard;
 
 
 use App\Question;
@@ -93,13 +94,10 @@ class QuestionController extends Controller
      *
      * @return Response
      */
-    public function index()
-    {
-        return array(
-          1 => "John",
-          2 => "Mary",
-          3 => "Steven"
-        );
+    public function index(Request $request, Guard $auth)
+    {   
+        print_r($auth->user());
+        return Question::with('answers')->paginate(1);
     }
     /**
      * Show the form for creating a new resource.
