@@ -18,6 +18,8 @@ class Answer extends Model
         'isCorrect' => 'boolean'
     ];
 
+    protected $hidden = array('isCorrect', 'created_at', 'updated_at');
+
     public static function validator($input){
 
         $rules = array(
