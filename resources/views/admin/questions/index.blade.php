@@ -18,16 +18,24 @@
                 <tr>
                   <th>Weight</th>
                   <th>Description</th>
-                  <th>Category</th>
+                  <th>Answers</th>
                   <th>Actions</th>
                 </tr>
                 </thead>
                 <tbody>
                   @foreach ($questions as $question)
                   <tr>
-                    <td>{{$question->name}}</td>
+                    <td>{{$question->weight}}</td>
                     <td>{{$question->description}}</td>
-                    <td class="pull-right">
+                    <td>
+                    <ol>
+                      @foreach ($question->answers as $answer)
+                      <li>{{$answer->description}} @if ($answer->isCorrect) <i class="pull-right fa text-success fa-check"></i> </li>
+                      @endif
+                      @endforeach
+                    </ol>
+                    </td>
+                    <td>
                         <a href="{{url('app/questions/edit', $question->id)}}" class="btn"><i class="fa text-default fa-pencil"></i></a> 
                         <a href="{{url('app/questions/delete', $question->id)}}" class="btn"><i class="text-danger fa fa-close"></i></a> 
                     </td>
@@ -79,7 +87,7 @@
                       <div class="input-group answers">
                           <input type="text" name="answers[0][description]" class="form-control input-lg" required>
                           <span class="input-group-addon">
-                            <input type="checkbox" class="isCorrect" name="answers[0][isCorrect]">
+                            <input type="checkbox" class="isCorrect" name="answers[0][isCorrect]" value="false">
                             <label><small>Correct</small></label>
                           </span>
                       </div>
@@ -88,7 +96,7 @@
                       <div class="input-group answers">
                           <input type="text" name="answers[1][description]" class="form-control input-lg" required>
                           <span class="input-group-addon">
-                            <input type="checkbox" class="isCorrect" name="answers[1][isCorrect]">
+                            <input type="checkbox" class="isCorrect" name="answers[1][isCorrect]" value="false">
                             <label><small>Correct</small></label>
                           </span>
                       </div>
@@ -164,7 +172,7 @@
         });
 
         $("#questionForm").submit(function(e) {
-
+          console.log($(this).serialize())
           let checkedBox = $(this).find('.isCorrect:checked');
 
           if(!checkedBox.length) {
