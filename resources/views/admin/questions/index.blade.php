@@ -53,7 +53,8 @@
               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
               <h4 class="modal-title" id="myModalLabel">Add New Question</h4>
             </div>
-            <form role="form" action="/app/categories/new" method="post">
+            <form role="form" id="questionForm" action="/app/questions/new" method="post">
+            <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
             <div class="modal-body">
                 <div class="form-group">
                   <label>Category</label>
@@ -73,7 +74,7 @@
                 </div>
                 <hr class="divider">
                 <label>Answers</label>
-                <div class=" answer-group">
+                <div class="answer-group">
                   <div class="form-group">
                       <div class="input-group answers">
                           <input type="text" name="answers[0][description]" class="form-control input-lg" required>
@@ -94,7 +95,7 @@
                   </div>
                 </div>
                 <div class="form-group pull-right">
-                    <a href id="addOne">Add More</a>  <a class="text-danger hidden" href="" id="removeOne">Remove Newest</a> 
+                    <a href id="addOne">Add More</a> <span class="removeOne hidden">|</span> <a class="text-danger hidden removeOne" href="" id="removeOne">Remove Newest</a> 
                 </div>
                 <br>
             </div>
@@ -111,33 +112,70 @@
   <script type="text/javascript">
 
     $(function() {
+        let parent = $('.answer-group');
 
-        var parent = $('.answer-group');
+        parent.on('change', function(e) {
 
-        if (parent.length < 2) {
-          $('#removeOne').show();
-        }
+          if (parent.children().length > 2) {
+            $('.removeOne').removeClass('hidden')
+          } else {
+            $('.removeOne').addClass('hidden');
+          }
+        })
 
         $("#importTrigger").click(function() {
             $("#bulkQuestions").trigger('click');
         });
+
         $("#addOne").click(function(e) {
+
           e.preventDefault();
-          let child = parent.last().html()
-          console.log(parent.last());
-          parent.append(child);
+          let last = parent.children().last();
+
+          let child = last.clone();
+
+          let index = last.index() + 1;
+
+          child.find("input[type=text]").attr("name", "answers[" + index + "][description]")
+          child.find("input[type=checkbox]").attr("name", "answers[" + index + "][isCorrect]")
+
+          parent.append("<div class='form-group'>" + child.html() + "</div>");
+          parent.trigger('change');
           return false;
         })
+
         $("#removeOne").click(function(e) {
           e.preventDefault();
           let parent = $('.answer-group');
           if (parent.length < 2) {
-            parent.last().remove();
-          } else {
-            $('#removeOne').hide();
-          }
+            parent.children().last().remove();
+          } 
+          parent.trigger('change');
           return false;
         })
+
+        $(":checkbox").change(function() {
+         
+          var $this = $(this);
+          
+          parent.find(":checkbox:not(:checked)").not($this).attr("disabled", this.checked);
+
+        });
+
+        $("#questionForm").submit(function(e) {
+
+          let checkedBox = $(this).find('.isCorrect:checked').then(function(list) {
+            alert(list)
+            alert('wharknfskfjs')
+          })
+
+          if(checkedBox.empty()) {
+            alert('You must designate one of the answers as the correct answer!')
+            e.preventDefault()
+            return false
+          }
+        })
+
     })
   </script>
 @endsection
