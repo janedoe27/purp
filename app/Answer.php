@@ -8,18 +8,21 @@ class Answer extends Model
 {
     //
     protected $fillable = [
-        'description', 'isCorrect'
+        'description', 'isCorrect', 'question_id'
     ]; 
 
     protected $attributes = array(
        'isCorrect' => false,
     );
+    protected $casts = [
+        'isCorrect' => 'boolean'
+    ];
 
     public static function validator($input){
 
         $rules = array(
             'description' => 'required|description',
-            'isCorrect' => 'required|isCorrect'
+            'isCorrect' => 'required|boolean|isCorrect',
         );
 
         return Validator::make($input,$rules);
