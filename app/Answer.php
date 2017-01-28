@@ -23,7 +23,7 @@ class Answer extends Model
         );
 
         return Validator::make($input,$rules);
-    };
+    }
 
     public function question(){
 	    return $this->hasOne(Question::class);
