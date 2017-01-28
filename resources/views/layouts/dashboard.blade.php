@@ -308,7 +308,11 @@ desired effect
     <br>
     <!-- Main content -->
     <section class="content">
-
+      @if (session('status'))
+          <div class="alert alert-success">
+              {{ session('status') }}
+          </div>
+      @endif
       <!-- Your Page Content Here -->
       @yield('content')
 
