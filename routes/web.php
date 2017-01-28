@@ -61,7 +61,7 @@ Route::group(['prefix' => 'app', 'middleware' => 'auth'], function () {
 	// Admin only routes
 	Route::group(['middleware' => 'auth'], function () {
 		Route::get('questions', 'QuestionController@admin');
-		Route::get('questions/new', 'QuestionController@new');
+		Route::post('questions/new', 'QuestionController@new');
 		Route::get('questions/import', 'QuestionController@import');
 
 		Route::get('categories', 'CategoryController@admin');
