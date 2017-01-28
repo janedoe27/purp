@@ -36,8 +36,8 @@ class QuestionController extends Controller
         $categories = Category::all();
         $questions = Question::all();
 
-        if (!$categories) {
-            return redirect()->action('CategoryController@admin')->with("status", "Category created successfully.");
+        if (!$categories->count()) {
+            return redirect()->action('CategoryController@admin')->with("status", "You must have at least one category before you can add a question.");
         }
 
         $locals = [
@@ -56,20 +56,20 @@ class QuestionController extends Controller
     public function new(Request $request)
     {
         $input = $request->all();
+        return print_r($input);
+        // $question = new Question([
+        //     'description' => $input['description'],
+        //     'weight' => $input['weight'],
+        //     'category' => $input['category']
+        // ]);
 
-        $question = new Question([
-            'description' => $input['description'],
-            'weight' => $input['weight'],
-            'category' => $input['category']
-        ]);
+        // $question->save();
 
-        $question->save();
+        // foreach ($input['answers'] as $answer) {
+        //     $question->answers()->create($answer);
+        // }
 
-        foreach ($input['answers'] as $answer) {
-            $question->answers()->create($answer);
-        }
-
-        return redirect()->back()->with("status", "Question created successfully.");
+        // return redirect()->back()->with("status", "Question created successfully.");
     }
 
 
