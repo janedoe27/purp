@@ -45,7 +45,7 @@
       </div>
       <!-- /.row -->
   
-   <!-- Modal -->
+    <!-- Modal -->
       <div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
@@ -77,7 +77,6 @@
   @section('local_js')
   <script type="text/javascript">
     $(document).ready(function() {
-
     })
   </script>
   @endsection

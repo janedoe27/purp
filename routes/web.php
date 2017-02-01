@@ -62,6 +62,12 @@ Route::group(['prefix' => 'app', 'middleware' => 'auth'], function () {
 		Route::post('categories/new', 'CategoryController@new');
 		Route::get('categories/delete/{id}', 'CategoryController@destroy');
 
+		Route::post('profiling/go', 'intervController@store');
+
+		Route::get('importExport', 'ExcelController@importExport');
+Route::get('downloadExcel/{type}', 'ExcelController@downloadExcel');
+Route::post('importExcel', 'ExcelController@importExcel');
+
 
 	});
 

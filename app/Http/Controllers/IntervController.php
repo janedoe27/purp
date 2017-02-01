@@ -26,7 +26,7 @@ class IntervController extends Controller
         $Interv->password = $request->password;
         $Interv->save();
 
-        return Redirect::to('admin/profiling')->with('success','Interv has been saved.');
+        return Redirect::to('app/interviews')->with('success','Interv has been saved.');
 
         
     }

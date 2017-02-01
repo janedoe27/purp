@@ -6,19 +6,19 @@
 
 
       <!-- row -->
-      <div class="row">
-        <div class="col-md-12">
+      <!--<div class="row">
+        <div class="col-md-12">-->
           <!-- The time line -->
-          <ul class="timeline">
+          <!--<ul class="timeline">-->
             <!-- timeline time label -->
-            <li class="time-label">
+            <!--<li class="time-label">
                   <span class="bg-red">
                     10 Feb. 2014
                   </span>
-            </li>
+            </li>-->
             <!-- /.timeline-label -->
             <!-- timeline item -->
-            <li>
+            <!--<li>
               <i class="fa fa-envelope bg-blue"></i>
 
               <div class="timeline-item">
@@ -34,10 +34,10 @@
                   <a class="btn btn-danger btn-xs">Delete</a>
                 </div>
               </div>
-            </li>
+            </li>-->
             <!-- END timeline item -->
             <!-- timeline item -->
-            <li>
+            <!--<li>
               <i class="fa fa-user bg-aqua"></i>
 
               <div class="timeline-item">
@@ -45,10 +45,10 @@
 
                 <h3 class="timeline-header no-border"><a href="#">Uche oba</a> just finished his test</h3>
               </div>
-            </li>
+            </li>-->
             <!-- END timeline item -->
             <!-- timeline item -->
-            <li>
+            <!--<li>
               <i class="fa fa-comments bg-yellow"></i>
 
               <div class="timeline-item">
@@ -60,7 +60,7 @@
                  Donatus Christal was just taken for the Job
                 </div>
               </div>
-            </li>
+            </li>-->
             <!-- END timeline item -->
           
              <!-- =========================================================== -->
