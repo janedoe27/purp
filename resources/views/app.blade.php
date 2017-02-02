@@ -6,7 +6,6 @@
     <div class="container">
       <br><br>
        @foreach ($questions->getCollection() as $question)
-      <h1 class="header center orange-text">QUESTION {{$question -> id}} </h1>
       <div class="row center" id="app">
       
         <h3 class="header col s12 light">
@@ -18,14 +17,15 @@
       </div>
       
         <div class="row center">
-          <form action="#">
+          <form action=""  id="submit" method="post">
+            <input type="hidden" name="question" value="{{$question->id}}">
             @foreach ($question->answers as $answer)
             <p>
-              <input name="answer" data-cbt-value="{{$answer->id}}" type="radio" id="test" />
-              <label for="test"> {{$answer-> description}}</label>
+              <input  type="radio" name="answer" class="form-control input-lg" value="{{$answer->id}}"  id="{{$answer->id}}" />
+              <label for="{{$answer->id}}"> {{$answer-> description}}</label>
             </p>
             @endforeach
-            <button type="submit" class="btn btn-success">Save</button>
+            <button type="submit" class="btn btn-default">Save</button>
           </form>
         </div>
       @endforeach
@@ -39,6 +39,29 @@
   <script type="text/javascript">
     $(function(){
       $('.disabled').addClass('hidden').hide();
-    })
+
+      (function() {
+        try {
+            var $_console$$ = console;
+            Object.defineProperty(window, "console", {
+                get: function() {
+                    if ($_console$$._commandLineAPI)
+                        throw "Sorry, for security reasons, the script console is deactivated on netflix.com";
+                    return $_console$$
+                },
+                set: function($val$$) {
+                    $_console$$ = $val$$
+                }
+            })
+        } catch ($ignore$$) {
+        }
+      })();
+      $("#submit").on('submit',  function(event) {
+        console.log($(this));
+
+        event.preventDefault();
+        return false;
+      })
+    });
   </script>
   @endsection
