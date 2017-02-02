@@ -6,7 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Question extends Model
 {
-    //
+    use Uuids;
+
+    /**
+     * Indicates if the IDs are auto-incrementing.
+     *
+     * @var bool
+     */
+    public $incrementing = false;
+    
+
     protected $fillable = [
         'description', 'weight', 'category_id'
     ]; 
