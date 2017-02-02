@@ -14,12 +14,12 @@ class Answers extends Migration
     public function up()
     {
         Schema::create('answers', function (Blueprint $table) {
-            $table->increments('id');
+            $table->uuid('id');
             
             $table->string('description');
             $table->boolean('isCorrect')->default(false);
 
-            $table->integer('question_id');
+            $table->uuid('question_id');
 
             $table->timestamps();
         });
