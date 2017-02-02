@@ -246,9 +246,10 @@ return [
         'Charts' => ConsoleTVs\Charts\Facades\Charts::class,
         'Notifynder' => Fenos\Notifynder\Facades\Notifynder::class,
         /*
-* Acacha AdminLTE template alias
-*/
-'AdminLTE' => Acacha\AdminLTETemplateLaravel\Facades\AdminLTE::class,
+        * Acacha AdminLTE template alias
+        */
+        'AdminLTE' => Acacha\AdminLTETemplateLaravel\Facades\AdminLTE::class,
+        'Uuid' => Webpatser\Uuid\Uuid::class,
 
         /*
          * Acacha Llum Aliases...
