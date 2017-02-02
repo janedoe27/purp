@@ -6,7 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Answer extends Model
 {
-    //
+    use Uuids;
+    
+    /**
+     * Indicates if the IDs are auto-incrementing.
+     *
+     * @var bool
+     */
+    public $incrementing = false;
+
     protected $fillable = [
         'description', 'isCorrect', 'question_id'
     ]; 
