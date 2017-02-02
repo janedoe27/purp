@@ -14,10 +14,10 @@ class Sessions extends Migration
     public function up()
     {
         Schema::create('sessions', function (Blueprint $table) {
-            $table->increments('id');
+            $table->uuid('id');
 
-            $table->integer('question_id');
-            $table->integer('answer_id');
+            $table->uuid('question_id');
+            $table->uuid('answer_id');
 
             $table->integer('interviewee_id');
 
