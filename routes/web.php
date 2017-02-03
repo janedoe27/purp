@@ -39,8 +39,13 @@ Route::group(['prefix' => 'app', 'middleware' => 'auth'], function () {
 
 	Route::get('new_ticket', 'TicketsController@create');
 	Route::post('new_ticket', 'TicketsController@store');
+
 	Route::post('/sette/test', 'TestController@store');
+
 	Route::post('/profiling/go', 'intervController@store');
+
+	Route::post('/candidates', 'intervController@register');
+
 	Route::post('/sette/test/s', 'TestController@show');
 
 	Route::get('my_tickets', 'TicketsController@userTickets');
