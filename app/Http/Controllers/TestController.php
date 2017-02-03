@@ -7,8 +7,11 @@ use Illuminate\Http\Request;
 use Input, Validator, Redirect;
 use App\questtest;
 use App\Question;
+use App\AnsweredQuestion;
 use App\app;
 use App\Http\Requests;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\controller;
 
 class TestController extends Controller
@@ -34,8 +37,18 @@ class TestController extends Controller
 
     public function new()
     {
+      $question = Question::whereNotExists(function($query) {
+        $query->select(DB::raw(1))
+              ->from('sessions')
+              ->whereRaw('questions.id = sessions.question_id')
+              ->where('sessions.interviewee_id', '=', Auth::user()->id);
+      })->inRandomOrder()->first();
 
-       return view('app')->with('questions', Question::simplePaginate(1));
+      if (!$question) {
+        return view('index')->with('teststatus', "Congratulations! You have completed the quiz");
+      }
+      
+      return view('app')->with('question', $question);
     }
 
 
