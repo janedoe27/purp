@@ -45,9 +45,9 @@ class TestController extends Controller
       })->inRandomOrder()->first();
 
       if (!$question) {
-        return view('index')->with('teststatus', "Congratulations! You have completed the quiz");
+        return redirect('/')->with('teststatus', "Congratulations! You have completed the quiz.");
       }
-      
+
       return view('app')->with('question', $question);
     }
 
