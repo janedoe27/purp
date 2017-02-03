@@ -2,13 +2,13 @@
 
 @section('new_resource')
 <button class="btn btn-success" data-toggle="modal" data-target="#formModal">New Candidate</button>
-<button class="btn btn-default" id="importTrigger">Import Candidates</button>
+<button class="btn hidden btn-default" id="importTrigger">Import Candidates</button>
 <input type="file" accept="text/csv|" hidden name="questions" class="hidden" id="bulkQuestions">
 @endsection
 @section('content')
 <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Data Table With Full Features</h3>
+              <h3 class="box-title">List of Interviewees.</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -17,16 +17,16 @@
                  
                 <tr>
                   <th>Candidate's Name</th>
-                  <th>Unit</th>
-                  <th>Tests</th>
                   <th>Questions Answered</th>
+                  <th>Correct Answers</th>
+                  <th>Completion Rate</th>
                   <th>Score</th>
                 </tr>
                 </thead>
                 <tbody>
                   @foreach ($intervs->getCollection() as $interv)
                 <tr>
-                  <td>{{$Interv->first_name}}</td>
+                  <td>Technology</td>
                   <td>Technology</td>
                   <td>Mathematics, English</td>
                   <td> 6</td>
@@ -36,10 +36,12 @@
                   @endforeach
               </table>
             </div>
+            <div class="box-footer center">
+              {{ $intervs->links() }}
+            </div>  
             <!-- /.box-body -->
           </div>
           <!-- /.box -->
-     {{-- {{ $Users->links() }} --}}
         </div>
         <!-- /.col -->
       </div>
@@ -53,21 +55,25 @@
               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
               <h4 class="modal-title" id="myModalLabel">New Category</h4>
             </div>
-            <form role="form" action="/app/categories/new" method="post">
+            <form role="form" action="/app/candidates" method="post">
             <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
             <div class="modal-body">
                 <div class="form-group">
-                  <label>Name</label>
-                  <input type="text" name="name" required class="form-control" placeholder="Enter ..." ">
+                  <label>First Name</label>
+                  <input type="text" name="first_name" required class="form-control" placeholder="Enter ..." required>
                 </div>
-                  <div class="form-group">
-                  <label>Description</label>
-                  <textarea name="description" required class="form-control" rows="3" placeholder="Enter ..."></textarea>
+                <div class="form-group">
+                  <label>Last Name</label>
+                  <input type="text" name="last_name" required class="form-control" placeholder="Enter ..." required>
+                </div>
+                <div class="form-group">
+                  <label>Email</label>
+                  <input type="email" name="email" required class="form-control" placeholder="Enter ..." required>
                 </div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary">Save</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+              <button type="submit" class="btn btn-primary">Create</button>
             </div>
             </form>
           </div>
