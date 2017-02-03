@@ -92,9 +92,11 @@ desired effect
                 <ul class="menu">
                   <li><!-- start notification -->
                     <a href="#">
-                      <i class="fa fa-users text-aqua"></i> 5 new members joined today
+                    @foreach (Auth::user()->unreadnotifications as $notification) 
+                      <i class="fa fa-users text-aqua"></i> {echo $notification->data;}
                     </a>
                   </li>
+                   @endforeach
                   <!-- end notification -->
                 </ul>
               </li>

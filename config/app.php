@@ -185,7 +185,7 @@ return [
         GeneaLabs\LaravelCaffeine\LaravelCaffeineServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
         ConsoleTVs\Charts\ChartsServiceProvider::class,
-         Fenos\Notifynder\NotifynderServiceProvider::class,
+
 
 
         /*
@@ -244,7 +244,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
         'Charts' => ConsoleTVs\Charts\Facades\Charts::class,
-        'Notifynder' => Fenos\Notifynder\Facades\Notifynder::class,
+
         /*
         * Acacha AdminLTE template alias
         */
