@@ -2,7 +2,7 @@
 
 @section('new_resource')
 <button class="btn btn-success" data-toggle="modal" data-target="#formModal">New Question</button>
-<button action="{{ URL::to('importExcel') }}"  method="post" enctype="multipart/form-data" class="btn btn-default" id="importTrigger">Import Questions</button>
+<button action="{{ URL::to('importExcel') }}"  method="post" enctype="multipart/form-data" class="btn hidden btn-default" id="importTrigger">Import Questions</button>
 <input type="file" accept="text/csv|" hidden name="import_file" class="hidden" id="bulkQuestions">
 @endsection
 @section('content')
