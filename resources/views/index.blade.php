@@ -8,9 +8,15 @@
       <div class="row center">
         <h5 class="header col s12 light">GTB ONLINE EXAM PLATFORM</h5>
       </div>
+      @if (Auth::guest())
       <div class="row center">
-        <a href="/register" id="download-button" class="btn-large waves-effect waves- orange darken-4">Get Started</a>
+        <a href="/register" id="download-button" class="btn-large waves-effect waves-orange darken-4">Get Started</a>
       </div>
+      @else
+      <div class="row center">
+        <a href="/app/test" id="download-button" class="btn-large waves-effect waves- orange darken-4">Take Test</a>
+      </div>
+      @endif
       <br><br>
 
     </div>
