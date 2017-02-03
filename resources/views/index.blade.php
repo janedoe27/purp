@@ -10,7 +10,7 @@
       </div>
       @if (Auth::guest())
       <div class="row center">
-        <a href="/register" id="download-button" class="btn-large waves-effect waves-orange darken-4">Get Started</a>
+        <a href="/login" id="download-button" class="btn-large waves-effect waves-orange darken-4">Get Started</a>
       </div>
       @else
       <div class="row center">

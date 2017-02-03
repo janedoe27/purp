@@ -6,6 +6,7 @@
 <input type="file" accept="text/csv|" hidden name="questions" class="hidden" id="bulkQuestions">
 @endsection
 @section('content')
+
 <div class="box">
             <div class="box-header">
               <h3 class="box-title">List of Interviewees.</h3>
@@ -24,20 +25,19 @@
                 </tr>
                 </thead>
                 <tbody>
-                  @foreach ($intervs->getCollection() as $interv)
+                  @foreach ($users as $user)
                 <tr>
-                  <td>Technology</td>
-                  <td>Technology</td>
+                  <td>{{$user->first_name }}</td>
+                  <td>{{$user->answer_id}}</td>
                   <td>Mathematics, English</td>
                   <td> 6</td>
-                  <td>32%</td>
+                  <td>{{$user->score }}</td>
                 </tr>
                                 </tbody>
                   @endforeach
               </table>
             </div>
             <div class="box-footer center">
-              {{ $intervs->links() }}
             </div>  
             <!-- /.box-body -->
           </div>
@@ -70,7 +70,7 @@
                   <label>Email</label>
                   <input type="email" name="email" required class="form-control" placeholder="Enter ..." required>
                 </div>
-            </div>
+                 
             <div class="modal-footer">
               <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
               <button type="submit" class="btn btn-primary">Create</button>
