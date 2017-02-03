@@ -18,11 +18,11 @@ class IntervCreated extends Notification
      * @return void
      */
 
-     private $workout;
+
 
     public function __construct()
     {
-         $this->workout = $workout;
+ 
     }
 
     /**
@@ -58,8 +58,9 @@ class IntervCreated extends Notification
      */
     public function toArray($notifiable)
     {
-        return [
-            //
-        ];
+        return new BroadcastMessage([
+        'invoice_id' => $this->invoice->id,
+        'amount' => $this->invoice->amount,
+    ]);
     }
 }

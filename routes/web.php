@@ -89,3 +89,9 @@ Route::group(['prefix' => 'api', 'middleware' => 'auth'], function() {
 	Route::resource('sessions', 'AnsweredQuestionController');
 });
 
+Route::get('/page', function () {
+    return view('page');
+});
+
+	Route::get('/getImport', 'ExcelController@getImport');
+	Route::get('/getImport', 'ExcelController@PostImport');

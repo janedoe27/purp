@@ -51,8 +51,9 @@ class IntervController extends Controller
         $user->first_name = $request->first_name;
         $user->last_name = $request->last_name;
         $user->email = $request->email;
+        $user->is_admin = $request->is_admin;
 
-        $user->password = bcrypt($request->password || 'CBT1234@@');
+        $user->password = bcrypt('CBT1234@@');
 
         $user->save();
 
@@ -66,16 +67,29 @@ class IntervController extends Controller
 
         // $intervs = Session::distinct('interviewee_id')
         // $intervs = Session::select(DB::raw('count(*) as completed, '))->whereExists(function($query) {
-        $intervs = Session::whereExists(function($query) {
-            $query->select(DB::raw(1))
-                ->from('answers')
-                ->whereRaw('answers.question_id = sessions.question_id and answers.id = sessions.answer_id');
-        })->join('users', function($join) {
-            $join->on('users.id', '=', 'interviewee_id');
-        })->paginate(50);
+        // $intervs = Session::whereExists(function($query) {
+        //     $query->select(DB::raw(1))
+        //         ->from('answers')
+        //         ->whereRaw('answers.question_id = sessions.question_id and answers.id = sessions.answer_id');
+        // })->join('users', function($join) {
+        //     $join->on('users.id', '=', 'interviewee_id');
+        // })->paginate(50);
 
-        // return $intervs;
-        return view('admin.intervs', compact('intervs'));
+        // // return $intervs;
+        // return view('admin.intervs', compact('intervs'));
+
+
+        // $users = DB::table('users')->where('role', '1')->get();
+
+$users = DB::table('users')
+            ->join('sessions', 'interviewee_id', '=', 'sessions.interviewee_id')
+            // ->join('orders', 'users.id', '=', 'orders.user_id')
+            ->select('users.*', 'score', 'answer_id')
+            // ->select (DB::raw('sum(score) as total'))
+            ->get();
+
+        // return $users;
+        return view ('admin.intervs', compact('users'));
     }
 
      public function report()
