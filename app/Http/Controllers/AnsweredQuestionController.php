@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 use App\AnsweredQuestion;
+use App\Question;
+use App\Answer;
+
 
 
 class AnsweredQuestionController extends Controller
@@ -43,12 +46,22 @@ class AnsweredQuestionController extends Controller
             
             $input = $request->all();
 
-            $session = new AnsweredQuestion([
-                'question_id' => $input['question'],
-                'answer_id' => $input['answer'],
-                'interviewee_id' => Auth::user()->id
-            ]);
+            $score = Question::where('id', $input['question'])->value('weight');
 
+            $session = new AnsweredQuestion();
+
+            $is_correct_answer = Answer::where('id', $input['answer'])->value('isCorrect');
+
+            $session->question_id = $request->question;
+            $session->answer_id = $request->answer;
+            $session->interviewee_id  = Auth::user()->id;
+
+            if($is_correct_answer) {
+                $session->score = $score;
+            } else {
+                $session->score = 0;
+            }
+            
             $session->save();
 
             return redirect()->back()->with("teststatus", "Your Answer was submitted successfully."); 
