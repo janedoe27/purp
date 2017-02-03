@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\Auth\Guard;
 
-
 use App\Question;
 use App\Category;
 
