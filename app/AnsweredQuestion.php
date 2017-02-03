@@ -16,7 +16,8 @@ class AnsweredQuestion extends Model
      */
     public $incrementing = false;
 
-    //
+    protected $table = 'sessions';
+
     protected $fillable = [
         'question_id', 'answer_id', 'interviewee_id'
     ]; 

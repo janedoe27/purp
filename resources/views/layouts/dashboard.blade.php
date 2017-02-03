@@ -235,6 +235,7 @@ desired effect
       <h4 class="breadcrumb" style="padding-bottom: 10px">
         @yield('new_resource')
       </h4>
+      <br>
     </section>
     <br>
     <!-- Main content -->
@@ -255,9 +256,6 @@ desired effect
   <!-- Main Footer -->
   <footer class="main-footer">
     <!-- To the right -->
-    <div class="pull-right hidden-xs">
-      Anything you want
-    </div>
     <!-- Default to the left -->
     <strong>Copyright &copy; 2016 <a href="#">GTB SL</a>.</strong> All rights reserved.
   </footer>

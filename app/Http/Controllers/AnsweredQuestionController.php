@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
- use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Auth;
 
-usee App\AnsweredQuestion as Session;
+use App\AnsweredQuestion;
 
 
 class AnsweredQuestionController extends Controller
@@ -38,17 +38,26 @@ class AnsweredQuestionController extends Controller
      */
     public function store(Request $request)
     {
-        $input = $request->all();
 
-        $session = new Session([
-            'question_id' => $input['question'],
-            'answer_id' => $input['answer'],
-            'interviewee_id' => Auth::user()->id
-        ]);
+        try {
+            
+            $input = $request->all();
 
-        $session->save();
+            $session = new AnsweredQuestion([
+                'question_id' => $input['question'],
+                'answer_id' => $input['answer'],
+                'interviewee_id' => Auth::user()->id
+            ]);
+
+            $session->save();
+
+            return redirect()->back()->with("teststatus", "Your Answer was submitted successfully."); 
         
-        return redirect()->action('TestController@new')->with("status", "Your Answer was submitted successfully."); 
+        } catch (Exception $e) {
+
+            return redirect()->action('TestController@new')->with("teststatus", "You have already submitted an answer for this question."); 
+        }
+
     }
 
     /**

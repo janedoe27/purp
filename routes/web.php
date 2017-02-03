@@ -32,6 +32,7 @@ Route::group(['prefix' => 'app', 'middleware' => 'auth'], function () {
 
 
 	Route::get('/test', 'TestController@new');
+	Route::post('/sessions', 'AnsweredQuestionController@store');
 
 	Route::get('/(:any)', array('as'=>'test', 'uses'=>'HomeController@view'));
 
@@ -65,8 +66,8 @@ Route::group(['prefix' => 'app', 'middleware' => 'auth'], function () {
 		Route::post('profiling/go', 'intervController@store');
 
 		Route::get('importExport', 'ExcelController@importExport');
-Route::get('downloadExcel/{type}', 'ExcelController@downloadExcel');
-Route::post('importExcel', 'ExcelController@importExcel');
+		Route::get('downloadExcel/{type}', 'ExcelController@downloadExcel');
+		Route::post('importExcel', 'ExcelController@importExcel');
 
 
 	});
@@ -80,5 +81,6 @@ Route::group(['prefix' => 'api', 'middleware' => 'auth'], function() {
 	Route::resource('categories', 'CategoryController');
 	Route::resource('questions', 'QuestionController');
 	Route::resource('answers', 'AnswerController');
+	Route::resource('sessions', 'AnsweredQuestionController');
 });
 

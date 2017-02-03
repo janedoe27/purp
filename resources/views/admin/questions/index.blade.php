@@ -62,7 +62,7 @@
               <h4 class="modal-title" id="myModalLabel">Add New Question</h4>
             </div>
             <form role="form" id="questionForm" action="/app/questions/new" method="post">
-            <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
+            <input type="hidden" name="_token" value="{{ csrf_token() }}" />
             <div class="modal-body">
                 <div class="form-group">
                   <label>Category</label>
