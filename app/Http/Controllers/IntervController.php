@@ -6,13 +6,26 @@ use Illuminate\Http\Request;
 
 use Input, Validator, Redirect;
 use App\Interv;
+use App\User;
+use App\AnsweredQuestion as Session;
 use App\admin\intervs;
+use Illuminate\Support\Facades\DB;
 use App\admin\profiling;
 use App\Http\Requests;
 use App\Http\Controllers\controller;
 
 class IntervController extends Controller
 {
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'first_name' => 'required|max:255',
+            'last_name' => 'required|max:255',
+            'email' => 'required|email|max:255|unique:users',
+            'password' => 'required|min:8',
+        ]);
+    }
+
     //
       public function store(Request $request)
     {
@@ -30,10 +43,38 @@ class IntervController extends Controller
 
         
     }
+    //
+      public function register(Request $request)
+    {
+        $user = new User();
+        
+        $user->first_name = $request->first_name;
+        $user->last_name = $request->last_name;
+        $user->email = $request->email;
+
+        $user->password = bcrypt($request->password || 'CBT1234@@');
+
+        $user->save();
+
+        return redirect()->back()->with('status','Candidate record have been saved.');
+
+        
+    }
 
      public function show()
     {
-        $intervs = Interv::Paginate(3);
+
+        // $intervs = Session::distinct('interviewee_id')
+        // $intervs = Session::select(DB::raw('count(*) as completed, '))->whereExists(function($query) {
+        $intervs = Session::whereExists(function($query) {
+            $query->select(DB::raw(1))
+                ->from('answers')
+                ->whereRaw('answers.question_id = sessions.question_id and answers.id = sessions.answer_id');
+        })->join('users', function($join) {
+            $join->on('users.id', '=', 'interviewee_id');
+        })->paginate(50);
+
+        // return $intervs;
         return view('admin.intervs', compact('intervs'));
     }
 
