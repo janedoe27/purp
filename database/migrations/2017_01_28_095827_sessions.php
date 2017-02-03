@@ -21,6 +21,8 @@ class Sessions extends Migration
 
             $table->integer('interviewee_id');
 
+            $table->unique(['question_id', 'answer_id', 'interviewee_id']);
+            
             $table->timestamps();
         });
     }
