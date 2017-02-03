@@ -3,7 +3,7 @@
 @include('errors.list')
 @section('content')
  <div class="section no-pad-bot" id="index-banner">
-    <div class="container">
+    <div class="container ">
       <br><br>
       <div class="row center" id="app">
       
