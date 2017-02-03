@@ -20,6 +20,7 @@ class Sessions extends Migration
             $table->uuid('answer_id');
 
             $table->integer('interviewee_id');
+            $table->integer('score');
 
             $table->unique(['question_id', 'answer_id', 'interviewee_id']);
             
