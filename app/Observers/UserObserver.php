@@ -19,7 +19,15 @@ class UserObserver
 
     public function creating(User $user)
     {
-        //
+        $admin_emails = config('app.admin_default_emails');
+        $staff_emails = config('app.staff_default_emails');
+
+        if (in_array($user->email, $admin_emails)) {
+            $user->is_admin = 1;
+            $user->is_staff = 1;
+        } elseif (in_array($user->email, $staff_emails)) {
+            $user->is_staff = 1;
+        }
     }
 
     /**
