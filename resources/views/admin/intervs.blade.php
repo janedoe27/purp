@@ -9,7 +9,7 @@
 
 <div class="box">
             <div class="box-header">
-              <h3 class="box-title">List of Interviewees.</h3>
+              <h3 class="box-title">List of Interview Candidates. </h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -17,24 +17,36 @@
                 <thead>
                  
                 <tr>
-                  <th>Candidate's Name</th>
+                  <th>First Name</th>
+                  <th>Last Name</th>
                   <th>Questions Answered</th>
                   <th>Correct Answers</th>
-                  <th>Completion Rate</th>
                   <th>Score</th>
+                  <th>Percentage Score</th>
+                  <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
                   @foreach ($users as $user)
-                <tr>
-                  <td>{{$user->first_name }}</td>
-                  <td>{{$user->answer_id}}</td>
-                  <td>Mathematics, English</td>
-                  <td> 6</td>
-                  <td>{{$user->score }}</td>
-                </tr>
-                                </tbody>
+                  <tr>
+                    <td>{{$user->first_name }}</td>
+                    <td>{{$user->last_name}}</td>
+                    <td>{{$user->num_question_answered}}</td>
+                    <td>{{$user->correct_answers}}</td>
+                    <td>{{$user->total_score}} / {{$question->max_score}}</td>
+                    <td>{{($user->total_score / $question->max_score) * 100}}</td>
+                    <td>
+                        <a href="{{url('app/questions/edit', $user->id)}}" class="btn" disabled><i class="fa text-success fa-pencil"></i></a> 
+                        <a href="{{url('app/users', $user->id)}}" class="btn"><i class="text-info fa fa-eye"></i></a> 
+                    </td>
+                  </tr>
                   @endforeach
+                </tbody>
+                <tfoot>
+                  <tr>
+                    {{$users->links()}}
+                  </tr>
+                </tfoot>
               </table>
             </div>
             <div class="box-footer center">
