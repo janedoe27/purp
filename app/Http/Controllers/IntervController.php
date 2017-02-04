@@ -76,14 +76,12 @@ class IntervController extends Controller
 
         $question = Question::selectRaw('count(id) as total_questions, sum(weight) as max_score')->first();
 
-        // return $question;
-
         return view ('admin.intervs', compact('users', 'question'));
     }
 
      public function report()
     {
-        $intervs = Interv::Paginate(3);
+        $intervs = Interv::simplePaginate(50);
         return view('admin.intervs', compact('intervs'));
     }
 
