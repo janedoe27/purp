@@ -4,15 +4,21 @@
 <!-- Main content -->
     <section class="content">
       <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-6 col-md-offset-3">
 
           <div class="box box-primary">
             <div class="box-body box-profile">
-              <img class="profile-user-img img-responsive img-circle" src="../../dist/img/user4-128x128.jpg" alt="User profile picture">
+              <img class="profile-user-img profile img-responsive img-circle" data-name="{{$user->first_name}} {{$user->last_name}}" data-char-count="2" alt="User profile picture">
 
-              <h3 class="profile-username text-center">Nina Mcintire</h3>
+              <h3 class="profile-username text-center">{{$user->first_name}} {{$user->last_name}}</h3>
+                @if ($user->is_admin)
+                <p class="text-muted text-center">Site Administrator</p>
+                @elseif ($user->is_staff)
+                <p class="text-muted text-center">Staff Member</p>
+                @else
+                <p class="text-muted text-center">Candidate</p>
+                @endif
 
-              <p class="text-muted text-center">Software Engineer</p>
 
               <ul class="list-group list-group-unbordered">
                 <li class="list-group-item">
@@ -37,4 +43,11 @@
       </section>
       
 
+  @endsection
+  @section('local_js')
+  <script>
+    $(function() {
+       $('.profile').initial(); 
+     });
+  </script>
   @endsection
