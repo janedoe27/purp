@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Input, Validator, Redirect;
 use App\Interv;
 use App\User;
+use App\Question;
 use App\AnsweredQuestion as Session;
 use App\admin\intervs;
 use Illuminate\Support\Facades\DB;
@@ -62,34 +63,22 @@ class IntervController extends Controller
         
     }
 
-     public function show()
+     public function show(Request $request)
     {
 
-        // $intervs = Session::distinct('interviewee_id')
-        // $intervs = Session::select(DB::raw('count(*) as completed, '))->whereExists(function($query) {
-        // $intervs = Session::whereExists(function($query) {
-        //     $query->select(DB::raw(1))
-        //         ->from('answers')
-        //         ->whereRaw('answers.question_id = sessions.question_id and answers.id = sessions.answer_id');
-        // })->join('users', function($join) {
-        //     $join->on('users.id', '=', 'interviewee_id');
-        // })->paginate(50);
+        $users = Session::join('users', 'users.id', '=', 'sessions.interviewee_id')
+            ->join('questions', 'questions.id', '=', 'sessions.question_id')
+            ->join('answers', 'answers.id', '=', 'sessions.answer_id')
+            ->selectRaw('users.id, first_name, last_name, count(sessions.question_id) as num_question_answered, count(case answers.isCorrect when true then 1 else null end ) as correct_answers, sum(score) as total_score')
+            ->where('interviewee_id', $request->user()->id)
+            ->groupBy('sessions.id', 'users.id', 'first_name', 'last_name')
+            ->paginate(50);
 
-        // // return $intervs;
-        // return view('admin.intervs', compact('intervs'));
+        $question = Question::selectRaw('count(id) as total_questions, sum(weight) as max_score')->first();
 
+        // return $question;
 
-        // $users = DB::table('users')->where('role', '1')->get();
-
-$users = DB::table('users')
-            ->join('sessions', 'interviewee_id', '=', 'sessions.interviewee_id')
-            // ->join('orders', 'users.id', '=', 'orders.user_id')
-            ->select('users.*', 'score', 'answer_id')
-            // ->select (DB::raw('sum(score) as total'))
-            ->get();
-
-        // return $users;
-        return view ('admin.intervs', compact('users'));
+        return view ('admin.intervs', compact('users', 'question'));
     }
 
      public function report()
