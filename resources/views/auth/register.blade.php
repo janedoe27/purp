@@ -61,30 +61,14 @@
       </div>
       </div>
 
-      <div class="form-group">
-
-      <p class="center">
-      <input value="1" type="checkbox"  id="is_admin" name="is_admin" />
-      <label for="is_admin">Staff</label>
-    </p>
-  
-                  <div class="checkbox center" >
-                    <label>
-                      <input  value="1" type="checkbox" name="is_admin">
-                      Staff
-                    </label>
-                  </div>
-            </div>
-
       <div class="row center">
-      <button class="btn waves-effect waves- orange darken-4" type="submit">START
-  </button>
+      <button class="btn waves-effect waves- orange darken-4" type="submit">START</button>
       </div>
     </form>
       
       <br><br>
       <div class="row center">
-        <h5>Please note that once you click the Login the Exams starts</h5>
+        <h6>Please note that once you click the Login the Exams starts</h6>
       </div>
     </div>
   </div>
