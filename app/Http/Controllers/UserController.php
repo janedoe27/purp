@@ -97,7 +97,25 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        
+        //
+        $user = User::where('id', $id)->first();
+
+        return view('/admin/users/edit', compact('user'));
+    }
+
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function profile()
+    {
+        //
+        $user = User::where('id', Auth::user()->id)->first();
+
+        return view('/admin/users/edit', compact('user'));
     }
 
     /**
