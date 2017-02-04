@@ -124,6 +124,10 @@ return [
 
     'log_level' => env('APP_LOG_LEVEL', 'debug'),
 
+    'admin_default_emails' => array("cleo@gtbank.com", "whatever@what.com", "bernardojengwa@gmail.com"),
+
+    'staff_default_emails' => array("staff1@gmail.com", "staff2@staff.com"),
+
     /*
     |--------------------------------------------------------------------------
     | Autoloaded Service Providers
@@ -258,6 +262,6 @@ return [
          */
         #llum_aliases
 
-    ],
+    ]
 
 ];
