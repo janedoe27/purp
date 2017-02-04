@@ -78,7 +78,7 @@
                 </div>
                 <div class="form-group">
                   <label>Weight</label>
-                  <input type="number" step="0.5" name="weight" class="form-control input-lg" placeholder="Select"  required>
+                  <input type="number" step="0.5" name="weight" class="form-control input-lg" placeholder="Select" value="1"  required>
                 </div>
                 <hr class="divider">
                 <label>Answers</label>
