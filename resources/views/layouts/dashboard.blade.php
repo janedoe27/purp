@@ -346,6 +346,7 @@ desired effect
 <script src="/plugins/jQuery/jquery-2.2.3.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
 <script src="/js/bootstrap.min.js"></script>
+<script src="/js/initial.min.js"></script>
 <!-- AdminLTE App -->
 <script src="/dist/js/app.min.js"></script>
 
