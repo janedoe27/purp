@@ -221,7 +221,7 @@ desired effect
         <li><a href="{{url('app/users') }}"><i class="fa fa-users"></i> <span>Users</span></a></li>
 
         <hr class="divider">
-        <li><a href="{{url('app/user/edit', Auth::user()->id) }}"><i class="fa fa-link"></i> <span>Settings</span></a></li>
+        <li><a href="{{url('app/users/profile') }}"><i class="fa fa-cog"></i> <span>Settings</span></a></li>
       </ul>
       <!-- /.sidebar-menu -->
     </section>
