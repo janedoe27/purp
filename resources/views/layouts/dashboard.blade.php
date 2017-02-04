@@ -218,9 +218,10 @@ desired effect
         <li><a href="{{url('app/tickets') }}"><i class="fa fa-link"></i> <span>View Tickets</span></a></li>
           </ul>
         </li>
+        <li><a href="{{url('app/users') }}"><i class="fa fa-users"></i> <span>Users</span></a></li>
 
         <hr class="divider">
-        <li><a href="{{url('app/settings') }}"><i class="fa fa-link"></i> <span>Settings</span></a></li>
+        <li><a href="{{url('app/user/edit', Auth::user()->id) }}"><i class="fa fa-link"></i> <span>Settings</span></a></li>
       </ul>
       <!-- /.sidebar-menu -->
     </section>
