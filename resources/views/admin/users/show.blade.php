@@ -32,7 +32,7 @@
                 </li>
               </ul>
 
-              <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>
+              <a href="{{url('app/users/edit', $user->id)}}" class="btn btn-primary btn-block"><b>Edit</b></a>
             </div>
             <!-- /.box-body -->
           </div>
