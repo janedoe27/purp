@@ -5,10 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\User;
- use App\Ticket;
- use App\Comment;
- use App\Mailers\AppMailer;
- use Illuminate\Support\Facades\Auth;
+use App\Ticket;
+use App\Comment;
+use App\Mailers\AppMailer;
+use Illuminate\Support\Facades\Auth;
 
 
 class CommentsController extends Controller
