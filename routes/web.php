@@ -69,9 +69,11 @@ Route::group(['prefix' => 'app', 'middleware' => 'auth'], function () {
 		Route::get('categories/delete/{id}', 'CategoryController@destroy');
 
 		Route::get('users', 'UserController@index');
-		Route::post('users/new', 'UserController@store');
 		Route::get('users/{id}', 'UserController@show');
-		Route::post('users/edit/{id}', 'UserController@edit');
+		Route::post('users/new', 'UserController@store');
+		Route::get('users/edit/{id}', 'UserController@edit');
+		Route::post('users/edit', 'UserController@update');
+		Route::get('users/profile', 'UserController@profile');
 		Route::get('users/delete/{id}', 'UserController@destroy');
 
 		Route::post('profiling/go', 'intervController@store');
