@@ -31,7 +31,7 @@
                   <tr>
                     <td>{{$user->first_name }}</td>
                     <td>{{$user->last_name}}</td>
-                    <td>{{$user->num_question_answered}}</td>
+                    <td>{{$user->num_question_answered}} / {{$question->total_questions}}</td>
                     <td>{{$user->correct_answers}}</td>
                     <td>{{$user->total_score}} / {{$question->max_score}}</td>
                     <td>{{($user->total_score / $question->max_score) * 100}}</td>
