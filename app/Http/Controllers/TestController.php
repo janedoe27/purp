@@ -45,6 +45,8 @@ class TestController extends Controller
       })->inRandomOrder()->first();
 
       if (!$question) {
+         
+
         return redirect('/')->with('teststatus', "Congratulations! You have completed the quiz.");
       }
 

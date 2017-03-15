@@ -4,13 +4,10 @@
   <div class="section no-pad-bot" id="index-banner">
     <div class="container">
       <br><br>
-      <h1 class="header center orange-text">GTBEX</h1>
-      <div class="row center">
-        <h5 class="header col s12 light">GTB ONLINE EXAM PLATFORM</h5>
-      </div>
+      <h1 class="header center orange-text">Purp CBT System</h1>
       @if (Auth::guest())
       <div class="row center">
-        <a href="/login" id="download-button" class="btn-large waves-effect waves-orange darken-4">Get Started</a>
+        <a href="/login" id="download-button" class="btn-large waves-effect waves- orange darken-4">Click Here To Get Started</a>
       </div>
       @else
       <div class="row center">

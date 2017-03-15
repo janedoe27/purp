@@ -12,7 +12,7 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => 'GTBEX',
+    'name' => 'Purp CBT System',
 
     /*
     |--------------------------------------------------------------------------
@@ -124,7 +124,7 @@ return [
 
     'log_level' => env('APP_LOG_LEVEL', 'debug'),
 
-    'admin_default_emails' => array("cleo@gtbank.com", "whatever@what.com", "bernardojengwa@gmail.com"),
+    'admin_default_emails' => array("cleopatra.douglas@gtbank.com", "whatever@what.com", "bernardojengwa@gmail.com"),
 
     'staff_default_emails' => array("staff1@gmail.com", "staff2@staff.com"),
 
@@ -189,6 +189,8 @@ return [
         GeneaLabs\LaravelCaffeine\LaravelCaffeineServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
         ConsoleTVs\Charts\ChartsServiceProvider::class,
+        Laracasts\Flash\FlashServiceProvider::class,
+        Collective\Html\HtmlServiceProvider::class,
 
 
 
@@ -248,6 +250,8 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
         'Charts' => ConsoleTVs\Charts\Facades\Charts::class,
+        'Form' => Collective\Html\FormFacade::class,
+      'Html' => Collective\Html\HtmlFacade::class,
 
         /*
         * Acacha AdminLTE template alias

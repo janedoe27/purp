@@ -7,12 +7,13 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'BANAT') }}</title>
+    <title>{{ config('app.name', 'Purp CBT System') }}</title>
 
   <!-- CSS  -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="/css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+      <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
     <!-- Scripts -->
     <script>
@@ -42,7 +43,6 @@
                         <!-- Authentication Links -->
                         @if (Auth::guest())
                             <li><a href="{{ url('/login') }}">Login</a></li>
-    <li><a href="{{ url('/register') }}">Register</a></li>
                         @else
         <li><a href="{{url('/app')}}">Hi {{ Auth::user()->first_name }}</a></li>
                                     <li>
@@ -73,14 +73,15 @@
       {{ session('teststatus') }}
   </div>
   @endif
+  @include('flash::message')
   @yield('content')
   </main>
   <footer class="page-footer orange darken-4">
     <div class="container">
       <div class="row">
         <div class="col l6 s12">
-          <h5 class="white-text">GTBANK SL</h5>
-          <p class="grey-text text-lighten-4">Wouldn't You Rather Bank With Us?.</p>
+          <h5 class="white-text">Purp CBT System</h5>
+          <p class="grey-text text-lighten-4">Beauty in Functionality.</p>
 
 
         </div>
@@ -106,7 +107,7 @@
     </div>
     <div class="footer-copyright">
       <div class="container">
-      Made by <a class="orange-text text-lighten-3" href="">APPDEV TEAM</a>
+      Made by <a class="orange-text text-lighten-3" href="">PURP</a>
       </div>
     </div>
   </footer>

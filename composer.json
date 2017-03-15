@@ -12,7 +12,8 @@
         "genealabs/laravel-caffeine": "~0.3.0",
         "maatwebsite/excel": "~2.1.0",
         "webpatser/laravel-uuid": "^2.0",
-        "consoletvs/charts": "3.*"
+        "consoletvs/charts": "3.*",
+        "laracasts/flash": "^2.0",
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

@@ -2,8 +2,7 @@
 
 @section('new_resource')
 <button class="btn btn-success" data-toggle="modal" data-target="#formModal">New Candidate</button>
-<button class="btn hidden btn-default" id="importTrigger">Import Candidates</button>
-<input type="file" accept="text/csv|" hidden name="questions" class="hidden" id="bulkQuestions">
+<a href="{{ URL::to('app/downloadExcel/csv') }}"><button class="btn btn-default">Download CSV</button></a>
 @endsection
 @section('content')
 
@@ -58,6 +57,8 @@
         <!-- /.col -->
       </div>
       <!-- /.row -->
+
+      
   
     <!-- Modal -->
       <div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

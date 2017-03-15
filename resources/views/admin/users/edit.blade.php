@@ -20,7 +20,7 @@
                 @endif
 
 
-              <ul class="list-group list-group-unbordered">
+              <!--<ul class="list-group list-group-unbordered">
                 <li class="list-group-item">
                   <b>Followers</b> <a class="pull-right">1,322</a>
                 </li>
@@ -30,9 +30,9 @@
                 <li class="list-group-item">
                   <b>Friends</b> <a class="pull-right">13,287</a>
                 </li>
-              </ul>
+              </ul>-->
 
-              <a href="" class="btn btn-primary btn-block"><b>Edit</b></a>
+              <a href="" class="btn btn-primary btn-block"  data-toggle="modal" data-target="#formModal"><b>Edit</b></a>
             </div>
             <!-- /.box-body -->
           </div>
@@ -41,6 +41,60 @@
         <!-- /.col -->
       </div>
       </section>
+       <!-- Modal -->
+      <div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel">Update User</h4>
+            </div>
+
+            <!--<form role="form" action="/app/candidates" method="post">
+            <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
+            <div class="modal-body">
+                <div class="form-group">
+                  <label>First Name</label>
+                  <input type="text" name="first_name" required class="form-control" placeholder="Enter ..." required>
+                </div>
+                <div class="form-group">
+                  <label>Last Name</label>
+                  <input type="text" name="last_name" required class="form-control" placeholder="Enter ..." required>
+                </div>
+                <div class="form-group">
+                  <label>Email</label>
+                  <input type="email" name="email" required class="form-control" placeholder="Enter ..." required>
+                </div>
+                 
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+              <button type="submit" class="btn btn-primary">Create</button>
+            </div>
+            </form>-->
+
+            {!!Form::model($user,['url' => 'app/users/' . $user->id]) !!}
+
+            <div class="form-group">
+            {!! Form::text('first_name', null, ['class'=>'form-control']) !!}
+            </div>
+
+            <div class="form-group">
+            {!! Form::text('email', null, ['class'=>'form-control']) !!}
+            </div>
+
+            <div class="form-group">
+            {!! Form::text('is_admin', null, ['class'=>'form-control']) !!}
+            </div>
+
+            <div class="form-group">
+            {!! Form::Submit('UPDATE', null, ['class'=>'btn btn-primary center']) !!}
+            </div>
+
+
+            {!! form::close() !!}
+          </div>
+        </div>
+      </div>
       
 
   @endsection

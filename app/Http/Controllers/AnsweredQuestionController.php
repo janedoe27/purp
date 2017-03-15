@@ -68,7 +68,9 @@ class AnsweredQuestionController extends Controller
         
         } catch (Exception $e) {
 
-            return redirect()->action('TestController@new')->with("teststatus", "You have already submitted an answer for this question."); 
+            flash( "You have already submitted an answer for this question.");
+
+            return redirect(); 
         }
 
     }

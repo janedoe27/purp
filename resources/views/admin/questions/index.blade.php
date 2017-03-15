@@ -2,8 +2,7 @@
 
 @section('new_resource')
 <button class="btn btn-success" data-toggle="modal" data-target="#formModal">New Question</button>
-<button action="{{ URL::to('importExcel') }}"  method="post" enctype="multipart/form-data" class="btn hidden btn-default" id="importTrigger">Import Questions</button>
-<input type="file" accept="text/csv|" hidden name="import_file" class="hidden" id="bulkQuestions">
+<a href="{{ URL::to('app/downloadExcelquestions/csv') }}"><button class="btn btn-default">Download CSV</button></a>
 @endsection
 @section('content')
 <div class="box">
@@ -47,6 +46,11 @@
             <!-- /.box-body -->
           </div>
           <!-- /.box -->
+           <form style="border: 4px solid #a1a1a1;margin-top: 15px;padding: 10px;" action="{{ URL::to('app/importExcel') }}" class="form-horizontal" method="post" enctype="multipart/form-data">
+			  {{ csrf_field() }}
+            <input type="file" name="import_file" />
+			<button class="btn btn-primary">Import Users</button>
+		</form>
      {{-- {{ $Users->links() }} --}}
         </div>
         <!-- /.col -->

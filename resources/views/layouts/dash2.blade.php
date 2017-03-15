@@ -211,15 +211,15 @@ desired effect
           </ul>
         </li>
 
-        
+       
         <li><a href="{{url('app/users') }}"><i class="fa fa-users"></i> <span>Users</span></a></li>
 
         <hr class="divider">
         <li><a href="{{url('app/users/profile') }}"><i class="fa fa-cog"></i> <span>Settings</span></a></li>
       </ul>
-
-       @else
-<li class="treeview">
+      <!-- /.sidebar-menu -->
+     @else
+       <li class="treeview">
           <a href="#"><i class="fa fa-link"></i> <span>Profile</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
@@ -232,9 +232,7 @@ desired effect
         <li><a href="{{url('app/tickets') }}"><i class="fa fa-link"></i> <span>Update Profile</span></a></li>
           </ul>
         </li>
-
-        @endif
-      <!-- /.sidebar-menu -->
+ @endif
     </section>
     <!-- /.sidebar -->
   </aside>
@@ -382,24 +380,9 @@ desired effect
     <script src="/plugins/slimScroll/jquery.slimscroll.min.js"></script>
     <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
     <script src="docs/docs.js"></script>
-    <!-- AdminLTE App -->
-<script src="/dist/js/app.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="/dist/js/demo.js"></script>
+  
 <!-- page script -->
-<script>
-  $(function () {
-    $("#example1").DataTable();
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false
-    });
-  });
-</script>
+
 <script>
     $('#flash-overlay-modal').modal();
 </script>

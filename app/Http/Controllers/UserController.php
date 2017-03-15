@@ -133,6 +133,8 @@ class UserController extends Controller
         $user->update($request->all());
 
         return redirect()->back()->with('status',"User's record was successfully.");
+
+        // return 'update made';
     }
 
     /**

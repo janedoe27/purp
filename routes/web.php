@@ -72,7 +72,7 @@ Route::group(['prefix' => 'app', 'middleware' => 'auth'], function () {
 		Route::get('users/{id}', 'UserController@show');
 		Route::post('users/new', 'UserController@store');
 		Route::get('users/edit/{id}', 'UserController@edit');
-		Route::post('users/edit', 'UserController@update');
+		Route::post('users/{id}', 'UserController@update');
 		Route::get('users/profile', 'UserController@profile');
 		Route::get('users/delete/{id}', 'UserController@destroy');
 
@@ -80,6 +80,7 @@ Route::group(['prefix' => 'app', 'middleware' => 'auth'], function () {
 
 		Route::get('importExport', 'ExcelController@importExport');
 		Route::get('downloadExcel/{type}', 'ExcelController@downloadExcel');
+		Route::get('downloadExcelquestions/{type}', 'ExcelControllerquestions@downloadExcel');
 		Route::post('importExcel', 'ExcelController@importExcel');
 
 
@@ -101,5 +102,4 @@ Route::get('/page', function () {
     return view('page');
 });
 
-	Route::get('/getImport', 'ExcelController@getImport');
-	Route::get('/getImport', 'ExcelController@PostImport');
+
