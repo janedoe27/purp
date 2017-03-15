@@ -51,7 +51,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
+    'url' => env('APP_URL', 'https://fierce-lake-95225.herokuapp.com/'),
 
     /*
     |--------------------------------------------------------------------------
